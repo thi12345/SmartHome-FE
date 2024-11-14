@@ -10,6 +10,7 @@ import { HistoryComponent } from './component/history/history.component';
 import { LoginComponent } from './component/login/login.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { ChangepassComponent } from './component/changepass/changepass.component';
+import { DeviceUpdateComponent } from './component/device-update/device-update.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path: 'device-view', component: DeviceViewComponent},
     {path: 'device-schedule', component: DeviceScheduleComponent},
     {path: 'device-delete', component: DeviceDeleteComponent},
+    {path: 'device-update', component: DeviceUpdateComponent},
     {path: 'history', component: HistoryComponent},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},

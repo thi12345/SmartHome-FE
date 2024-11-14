@@ -8,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrl: './device-header.component.css'
 })
 export class DeviceHeaderComponent {
+  selectedTab: string = 'view'; // Tab mặc định
+  deviceName: string = '';
+  deviceType: string = '';
 
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+  }
+
+  addDevice() {
+    // Logic để thêm thiết bị
+    console.log(`Adding device: Name=${this.deviceName}, Type=${this.deviceType}`);
+  }
 }

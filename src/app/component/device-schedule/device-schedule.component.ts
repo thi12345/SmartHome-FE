@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { DeviceHeaderComponent } from '../device-header/device-header.component';
 
 @Component({
   selector: 'app-device-schedule',
   standalone: true,
-  imports: [],
+  imports: [DeviceHeaderComponent],
   templateUrl: './device-schedule.component.html',
   styleUrl: './device-schedule.component.css'
 })

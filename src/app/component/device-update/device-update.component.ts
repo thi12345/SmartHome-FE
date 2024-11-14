@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { DeviceHeaderComponent } from '../device-header/device-header.component';
 
 @Component({
-  selector: 'app-device-add',
+  selector: 'app-device-update',
   standalone: true,
   imports: [DeviceHeaderComponent],
-  templateUrl: './device-add.component.html',
-  styleUrl: './device-add.component.css'
+  templateUrl: './device-update.component.html',
+  styleUrl: './device-update.component.css'
 })
-export class DeviceAddComponent {
+export class DeviceUpdateComponent {
 
 }
