@@ -5,28 +5,32 @@ import { User } from '../models/user.modal';
 })
 
 export class UserService {
-  user1: User = {
-    username: 'admin1',
-    firstName: 'A',
-    lastName: 'Nguyen Van',
-    email: 'admin1@gmail.com',
-    phoneNumber: '0123456789',
-    password: 'admin1'
-  };
-  user2: User = {
-    username: 'admin2',
-    firstName: 'B',
-    lastName: 'Nguyen Thi',
-    email: 'admin2@gmail.com',
-    phoneNumber: '0123456788',
-    password: 'admin2'
-  };
 
 
 
-  private users: User[]= [];
+
+  private users: User[]= [
+     {
+      username: 'admin1',
+      firstName: 'A',
+      lastName: 'Nguyen Van',
+      email: 'admin1@gmail.com',
+      phoneNumber: '0123456789',
+      password: 'admin1'
+    },
+    {
+      username: 'admin2',
+      firstName: 'B',
+      lastName: 'Nguyen Thi',
+      email: 'admin2@gmail.com',
+      phoneNumber: '0123456788',
+      password: 'admin2'
+    }
+  ];
   private loggedInUser: User | null = null;
-  constructor() { }
+  constructor() {
+ 
+   }
 
   login(username: string, password: string): boolean {
     const user = this.users.find(u => u.username === username && u.password === password);
@@ -42,5 +46,8 @@ export class UserService {
   }
   logout(): void {
     this.loggedInUser = null;
+  }
+  isLoggedIn(): boolean{
+    return this.loggedInUser !== null;
   }
 }

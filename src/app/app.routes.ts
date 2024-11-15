@@ -24,5 +24,6 @@ export const routes: Routes = [
     {path: 'history', component: HistoryComponent},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
-    {path: 'changepass', component: ChangepassComponent}
+    {path: 'changepass', component: ChangepassComponent},
+    {path: 'user-info', component: UserInfoComponent}
 ];

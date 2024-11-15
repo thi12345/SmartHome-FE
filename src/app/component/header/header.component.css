@@ -1,44 +1,109 @@
 .header {
-    background-color: #fff;
-    color: white;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar-brand a {
-    color: #6984ff;
-    font-size: 1.5rem;
-    text-decoration: none;
-  }
-  
-  .navbar-menu {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-  }
-  
-  .navbar-menu li a {
-    color: #000;
-    text-decoration: none;
-  }
-  
-  .navbar-actions button {
-    background-color: #fff;
-    color: #007bff;
-    border: none;
-    padding: 5px 10px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  
-  .navbar-actions button:hover {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+.navbar-brand {
+  display: flex;
+  justify-content: space-around;
+}
+.navbar-title {
+  display: flex;
+  align-items: center;
+}
+.navbar-title a{
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: 'Arial', sans-serif;
+  gap: 20px;
+  align-items: center;
+
+} 
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+
+}
+.navbar-menu li a {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Arial', sans-serif;
+  margin-left: 60px;
+}
+.navbar-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-actions button {
+  background: none;
+  border: 1px solid white;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.user-avatar {
+  position: relative;
+  cursor: pointer;
+}
+
+.user-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.user-avatar:hover .dropdown-menu {
+  display: block;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  color: black;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+.userdropdown{
+  color: #000;
+  margin: 0;
+}

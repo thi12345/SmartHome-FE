@@ -1,20 +1,31 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { UserService } from '../../share/user.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  login() {
-    // Logic xử lý khi bấm vào Login
-    console.log('Login clicked');
+  showDropdown = false;
+  constructor(public userService: UserService, private router: Router) {}
+  onLogout(): void {
+    this.userService.logout();
+    this.router.navigate(['/home']);
   }
-
-  signup() {
-    // Logic xử lý khi bấm vào Sign Up
-    console.log('Sign Up clicked');
+  gotoLogin(){
+    this.router.navigate(['/login']);
+  }
+  gotoSignup(){
+    this.router.navigate(['/signup']);
+  }
+  gotoUserInfo(){
+     this.router.navigate(['/user-info']);
+  }
+  gotoChangePassword(){
+     this.router.navigate(['/changepass']);
   }
 }

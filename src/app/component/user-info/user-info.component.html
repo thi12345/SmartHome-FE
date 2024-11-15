@@ -1,1 +1,45 @@
-<p>user-info works!</p>
+<app-header></app-header>
+
+<div *ngIf="user" class="user-info">
+    <h2 class="">Personal Info</h2>
+    <div class="info-content">
+      <div class="user-avatar">
+        <img src="../../../assets/avartar-anime-6.jpg" alt="User Avatar" />
+      </div>
+      <div class="info-fields">
+        <div class="info-detail">
+            <label>Username</label>
+            <input type="text"  [value]="user.username" readonly />
+        </div>
+
+        <div class="info-detail">
+            <label>First Name</label>
+            <input type="text"  [value]="user.firstName" readonly />
+        </div>
+
+        <div class="info-detail">        
+            <label>Last Name</label>
+            <input type="text"  [value]="user.lastName" readonly />
+        </div>
+
+        <div class="info-detail">  
+            <label>Phone Number</label>
+            <input type="text"   [value]="user.phoneNumber" readonly />
+        </div>
+  
+        <div class="info-detail">  
+            <label>Email</label>
+            <input type="email" [value]="user.email" readonly />
+        </div>
+        
+        <button (click)="onChangeInfo()">Change Info</button>
+      </div>
+    </div>
+    <!-- <div class="buttons">
+ 
+    
+    </div> -->
+  </div>
+  <div *ngIf="!user" class="no-user">
+    <p>User not logged in. Please log in to view information.</p>
+  </div>
