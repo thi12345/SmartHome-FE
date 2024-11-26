@@ -1,2 +1,13 @@
+<app-header></app-header>
 <app-device-header></app-device-header>
-<p>device-add works!</p>
+<form>
+  <label for="deviceName">Device Name:</label>
+  <input id="deviceName" type="text" placeholder="Enter device name" [(ngModel)]="newDevice.name" />
+
+  <label for="deviceType">Device Type:</label>
+  <select id="deviceType" [(ngModel)]="newDevice.category.id" required>
+    <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+  </select>
+
+  <button type="button">ADD</button>
+</form>
