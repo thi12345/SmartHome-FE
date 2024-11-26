@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DeviceHeaderComponent } from '../device-header/device-header.component';
+import { DeviceHeaderComponent } from '../device/device-header/device-header.component';
 
 @Component({
   selector: 'app-device-schedule',

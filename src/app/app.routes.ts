@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
 
 import { HomeComponent } from './component/home/home.component';
-import { UserInfoComponent } from './component/user-info/user-info.component';
-import { DeviceAddComponent } from './component/device-add/device-add.component';
-import { DeviceDeleteComponent } from './component/device-delete/device-delete.component';
-import { DeviceViewComponent } from './component/device-view/device-view.component';
+import { UserInfoComponent } from './component/account/user-info/user-info.component';
+import { DeviceAddComponent } from './component/device/device-add/device-add.component';
+import { DeviceDeleteComponent } from './component/device/device-delete/device-delete.component';
+import { DeviceViewComponent } from './component/device/device-view/device-view.component';
 import { DeviceScheduleComponent } from './component/device-schedule/device-schedule.component';
 import { HistoryComponent } from './component/history/history.component';
-import { LoginComponent } from './component/login/login.component';
-import { SignupComponent } from './component/signup/signup.component';
-import { ChangepassComponent } from './component/changepass/changepass.component';
-import { DeviceUpdateComponent } from './component/device-update/device-update.component';
+import { LoginComponent } from './component/account/login/login.component';
+import { SignupComponent } from './component/account/signup/signup.component';
+import { ChangepassComponent } from './component/account/changepass/changepass.component';
+import { DeviceUpdateComponent } from './component/device/device-update/device-update.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},

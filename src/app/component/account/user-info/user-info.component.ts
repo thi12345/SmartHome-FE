@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-import { UserService } from '../../share/user.service';
-import { User } from '../../models/user.modal';
+import { HeaderComponent } from '../../header/header.component';
+import { UserService } from '../../../share/user.service';
+import { User } from '../../../models/user.modal';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-user-info',

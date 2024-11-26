@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DeviceHeaderComponent } from '../device-header/device-header.component';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "../header/header.component";
+import { HeaderComponent } from "../../header/header.component";
 
 interface Device{
   name: string;
