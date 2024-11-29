@@ -1,13 +1,23 @@
 <app-header></app-header>
 <app-device-header></app-device-header>
-<form>
-  <label for="deviceName">Device Name:</label>
-  <input id="deviceName" type="text" placeholder="Enter device name" [(ngModel)]="newDevice.name" />
-
-  <label for="deviceType">Device Type:</label>
-  <select id="deviceType" [(ngModel)]="newDevice.category.id" required>
-    <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+<form (ngSubmit)="addDevice()">
+  <div class="form-add">
+    <label for="name" class="form-add-label">Tên thiết bị:</label>
+    <input id="name" [(ngModel)]="newDevice.name" name="name" class="form-add-left input-name" required />
+  </div>
+  <div class="form-add">
+    <label for="category" class="form-add-label">Loại thiết bị:</label>
+  <select [(ngModel)]="newDevice.category.id" name="category"  class="form-add-left" required>
+    <option class="category-name" *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
   </select>
+  </div>
 
-  <button type="button">ADD</button>
+<div class="form-add">
+  <label for="description" class="form-add-label">Mô tả:</label>
+  <input id="description" [(ngModel)]="newDevice.description"  class="form-add-left input-name" name="description" />
+</div>
+  
+
+
+  <button type="submit" class="form-add-sub">Thêm thiết bị</button>
 </form>

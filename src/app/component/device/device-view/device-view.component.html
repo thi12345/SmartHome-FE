@@ -1,5 +1,36 @@
 <app-header></app-header>
 <app-device-header></app-device-header>
 <div class="container">
-     <!-- <div class="card-body" *ngFor="let device of DeviceEx"></div>  -->
+     <div *ngFor="let device of devices" class="row">
+      <div class="device-container">
+        <div class="device-view-title-line">
+          <label class="device-view-title view-name">Name</label>
+          <label class="device-view-title device-view-title-left view-type">Type</label>
+          <label class="device-view-title device-view-title-left view-status">Status</label>
+          <label class="device-view-title device-view-title-left view-status">Action</label>
+        </div>
+        <div class="device-view-data-line">
+          <h3 class="deivce-view-data view-name">{{device.name}}</h3>
+          <h3 class="deivce-view-data deivce-view-data-left view-type">{{device.category.name}}</h3>
+          <h3 class="deivce-view-data deivce-view-data-left view-status">{{device.status.description}}</h3>
+          <button class="device-view-button"  (click)="goToUpdate(device.id)">Update</button>
+          <button class="device-view-button device-view-button-left" (click)="deleteDevice(device.id)">Delete</button>
+        </div>
+      </div>
+      
 </div>
+<!-- <div class="device-container">
+        <div class="device-view-title-line">
+          <label class="device-view-title view-name">Name</label>
+          <label class="device-view-title device-view-title-left view-type">Type</label>
+          <label class="device-view-title device-view-title-left view-status">Status</label>
+          <label class="device-view-title device-view-title-left view-status">Action</label>
+        </div>
+        <div class="device-view-data-line">
+          <h3 class="deivce-view-data view-name">Quat Tran</h3>
+          <h3 class="deivce-view-data deivce-view-data-left view-type">Fan</h3>
+          <h3 class="deivce-view-data deivce-view-data-left view-status">Bi hong</h3>
+          <button class="device-view-button"  (click)="goToUpdate(device.id)">Update</button>
+          <button class="device-view-button device-view-button-left" >Delete</button>
+        </div>
+</div> -->

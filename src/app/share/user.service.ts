@@ -7,8 +7,7 @@ import { User } from '../models/user.modal';
 export class UserService {
 
 
-
-
+ 
   private users: User[]= [
      {
       username: 'admin1',

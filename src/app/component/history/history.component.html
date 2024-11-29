@@ -3,15 +3,17 @@
     <table>
         <thead>
           <tr>
-            <th class="td-1">Time</th>
-            <th class="td-2">Activity</th>
-            <th class="td-3">Delete</th>
+            <th class="td-1">Device Name</th>
+            <th class="td-2">Time</th>
+            <th class="td-3">Energy</th>
+            <th class="td-4">Delete</th>
           </tr>
         </thead>
         <tbody>
             <tr *ngFor="let record of historyRecords">
-              <td class="td-1">{{ record.time }}</td>
-              <td class="td-2">{{ record.activity }}</td>
+              <td class="td-1">{{ record.device.name }}</td>
+              <td class="td-2">{{ record.time | date: 'dd/MM/yyyy HH:mm' }}</td>
+              <td class="td-3">{{ record.device.energy }}</td>
               <td class="delete td-3" (click)="deleteRecord(record)"><img src="../../../assets/delete-button-removebg-preview.png" class="delete-button"></td>
             </tr>
           </tbody>

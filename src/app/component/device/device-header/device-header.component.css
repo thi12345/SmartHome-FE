@@ -1,4 +1,13 @@
+.device-header{
+    margin-top: 20px;
+    margin-left: 200px;
+}
 .device-header-title{
     text-decoration: none;
     color: #000;
+    font-size: large;
+    font-weight: bold;
+}
+.device-header-space{
+    margin-left: 80px;
 }

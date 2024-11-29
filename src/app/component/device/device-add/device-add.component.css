@@ -1,0 +1,24 @@
+.form-add{
+    margin-left:200px;
+    margin-top: 20px;
+    display: flex;
+}
+.form-add-label{
+    width: 200px;
+    font-size: 24px;
+
+}
+
+
+.form-add-sub{
+    margin-left:400px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+.category-name{
+    font-size: 16px;
+}
+.input-name{
+    font-size: 16px;
+    padding-left: 12px;
+}
