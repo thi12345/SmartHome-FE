@@ -34,3 +34,11 @@
           <button class="device-view-button device-view-button-left" >Delete</button>
         </div>
 </div> -->
+
+<div class="test">
+  <div *ngFor="let category of categories">
+
+    {{category.name}}
+    <button (click)="deleteCategory(category.id)">Delete</button>
+  </div>
+</div>

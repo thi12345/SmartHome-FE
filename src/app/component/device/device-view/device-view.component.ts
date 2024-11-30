@@ -21,9 +21,11 @@ export class DeviceViewComponent implements OnInit {
   categories: Category[] = [];
   isLoading: boolean = false;  // Biến để xử lý trạng thái loading
   errorMessage: string = '';  // Biến để lưu thông báo lỗi
-  constructor(private deviceService: DeviceService, private router: Router) { }
+  constructor(private deviceService: DeviceService, private categoryService: CategoryService, private router: Router) { }
   ngOnInit(): void {
     this.fetchDevices();
+
+    this.fetchCategories();
     // this.isLoading = true;
 
     // this.deviceService.getDevices().subscribe({
@@ -58,5 +60,18 @@ export class DeviceViewComponent implements OnInit {
     this.deviceService.getDevices().subscribe((data: any) => {
       this.devices = data;
     });
+  }
+  fetchCategories(): void {
+    this.categoryService.getCategories().subscribe((data: any) => {
+      this.categories = data;
+    });
+  }
+  deleteCategory(id: number): void {
+    if (confirm('Are you sure you want to delete this category?')) {
+      this.categoryService.deleteCategory(id).subscribe(() => {
+        alert('Category deleted successfully!');
+        this.fetchCategories(); // Cập nhật danh sách sau khi xóa
+      });
+    }
   }
 }

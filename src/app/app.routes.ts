@@ -11,6 +11,10 @@ import { LoginComponent } from './component/account/login/login.component';
 import { SignupComponent } from './component/account/signup/signup.component';
 import { ChangepassComponent } from './component/account/changepass/changepass.component';
 import { DeviceUpdateComponent } from './component/device/device-update/device-update.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { CategoryComponent } from './component/device/category/category.component';
+
+
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -25,5 +29,7 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'changepass', component: ChangepassComponent},
-    {path: 'user-info', component: UserInfoComponent}
+    {path: 'user-info', component: UserInfoComponent},
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'device-category', component: CategoryComponent},
 ];
