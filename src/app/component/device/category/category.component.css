@@ -1,0 +1,65 @@
+.cate-container{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    min-height: 400px;
+}
+.category-list{
+    width: 50%;
+}
+.separator {
+    width: 2px;
+    background-color: #ccc;
+    margin: 0 10px;
+  }
+.category-add{
+    width: 50%;
+}
+.category-item{
+    display: flex;
+}
+.button-delete{
+    height: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.form-add-label{
+    font-size: 16px;
+    width: 150px;
+}
+.input-name{
+    margin-left: 12px;
+    font-size: 16px;
+}
+.form-add-sub{
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+.status-container{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    min-height: 400px;
+}
+.status-list{
+    width: 50%;
+}
+.status-add{
+    width: 50%;
+}
+.list-name{
+    margin-left: 200px;
+    width: 150px;
+    margin-top: 20px;
+}
+.label-name{
+    margin-left: 200px;
+    
+}
+.form-add{
+    margin-left: 40px;
+    margin-top: 40px;
+}
