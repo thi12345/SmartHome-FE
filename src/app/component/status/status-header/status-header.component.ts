@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../header/header.component';
 @Component({
-  selector: 'app-device-header',
+  selector: 'app-status-header',
   standalone: true,
   imports: [HeaderComponent],
-  templateUrl: './device-header.component.html',
-  styleUrl: './device-header.component.css'
+  templateUrl: './status-header.component.html',
+  styleUrl: './status-header.component.css'
 })
-export class DeviceHeaderComponent {
+export class StatusHeaderComponent {
 
 }

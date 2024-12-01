@@ -1,0 +1,36 @@
+<app-schedule-header></app-schedule-header>
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <div class="form-update">
+        <label for="time" class="form-update-label required" id="time">Thời gian:</label>
+        <input id="time" [(ngModel)]="newSchedule.time" name="time" class="form-add-left input-name" required
+            type="datetime-local" />
+    </div>
+
+
+    <div class="form-update">
+        <label for="action" class="form-update-label required">Thao tác:</label>
+        <select [(ngModel)]="newSchedule.action" name="action" class="form-add-left" required>
+            <option *ngFor="let act of [true,false]" [ngValue]="act">{{turnOnOff[act.toString()]}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-update">
+        <label for="value" class="form-update-label">Giá trị:</label>
+        <input id="value" [(ngModel)]="newSchedule.value" class="form-add-left input-name" name="value" type="number" />
+    </div>
+
+
+    <div class="form-update">
+        <label for="device" class="form-update-label required">Thiết bị:</label>
+        <select [(ngModel)]="newSchedule.device.id" name="device" class="form-add-left" required>
+            <option *ngFor="let device of devices" [ngValue]="device.id">{{device.name}}
+            </option>
+        </select>
+    </div>
+
+    <div class="button"><button class="update-button" type="submit">Cập nhật</button>
+        <button class="update-button" type="button" (click)="onCancel()">Hủy bỏ</button>
+    </div>
+
+</form>

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceHeaderComponent } from '../device-header/device-header.component';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "../../header/header.component";
-
 import { Device, DeviceService } from '../../../share/device.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-device-view',
   standalone: true,
-  imports: [DeviceHeaderComponent, CommonModule, HeaderComponent, HttpClientModule],
+  imports: [DeviceHeaderComponent, CommonModule, HttpClientModule],
   providers: [DeviceService, CategoryService],
   templateUrl: './device-view.component.html',
   styleUrl: './device-view.component.css'
@@ -19,6 +17,8 @@ import { Router } from '@angular/router';
 export class DeviceViewComponent implements OnInit {
   devices: Device[] = [];
   categories: Category[] = [];
+  isOnOff: { [key: string]: string } = { 'true': 'đang bật', 'false': 'đang tắt' }
+  OnOff: { [key: string]: string } = { 'false': 'Bật', 'true': 'Tắt' }
   isLoading: boolean = false;  // Biến để xử lý trạng thái loading
   errorMessage: string = '';  // Biến để lưu thông báo lỗi
   constructor(private deviceService: DeviceService, private categoryService: CategoryService, private router: Router) { }
@@ -26,32 +26,16 @@ export class DeviceViewComponent implements OnInit {
     this.fetchDevices();
 
     this.fetchCategories();
-    // this.isLoading = true;
 
-    // this.deviceService.getDevices().subscribe({
-    //   next: (data) =>{
-    //     this.devices = data;
-    //     this.isLoading = false;  // Thoát khỏi trạng thái loading
-    //   },
-    //   error: (error) => {
-    //     this.errorMessage = 'Không thể tải danh sách thiết bị';
-    //     this.isLoading = false;  // Thoát khỏi trạng thái loading khi lỗi
-    //   }
-    // });
-    // this.fetchCategories();
   }
-  // fetchCategories(): void {
-  //   this.categoryService.getCategories().subscribe((data) => {
-  //     this.categories = data;
-  //   });
-  // }
+
   goToUpdate(id: number): void {
-    this.router.navigate(['/device/update', id]);
+    this.router.navigate(['/device-update', id]);
   }
   deleteDevice(id: number): void {
-    if (confirm('Are you sure you want to delete this device?')) {
+    if (confirm('Xóa thiết bị sẽ xóa luôn lịch sử và lịch hoạt động kèm theo. Bạn chắc chứ?')) {
       this.deviceService.deleteDevice(id).subscribe(() => {
-        alert('Device deleted successfully!');
+        alert('Thiết bị được xóa thành công');
         this.fetchDevices(); // Cập nhật danh sách sau khi xóa
       });
     }
@@ -66,12 +50,8 @@ export class DeviceViewComponent implements OnInit {
       this.categories = data;
     });
   }
-  deleteCategory(id: number): void {
-    if (confirm('Are you sure you want to delete this category?')) {
-      this.categoryService.deleteCategory(id).subscribe(() => {
-        alert('Category deleted successfully!');
-        this.fetchCategories(); // Cập nhật danh sách sau khi xóa
-      });
-    }
-  }
+
+
+  turnOnOff(id: number): void { }
+
 }

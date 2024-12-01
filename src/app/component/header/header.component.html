@@ -1,36 +1,44 @@
 <header class="header">
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <div class="navbar-title"><a href="/">GROUP2</a></div>
-        <ul class="navbar-menu">
-          <li><a href="/home">Home</a></li>
-          <li><a href="/dashboard">Dashboard</a></li>
-          <li><a href="/device">Device</a></li>
-          <li><a href="/history">History</a></li>
-        </ul>
-      </div>
-      
-      <div class="navbar-actions">
-        <!-- before login -->
-        <ng-container *ngIf="!userService.isLoggedIn(); else LoggedInTemplate">
-          <a href="/login"><button (click)="gotoLogin()">Sign In</button></a>
-          <a href="/signup"><button (click)="gotoSignup()">Sign Up</button></a>
-        </ng-container>
-        <!-- after login -->
-         <ng-template #LoggedInTemplate>
-          <div class="user-avatar" (click)="showDropdown = !showDropdown">
-            <img src="../../../assets/avartar-anime-6.jpg" alt="User Avatar" />
-          </div>
-          <div *ngIf="showDropdown" class="dropdown-menu">
-            <button (click)="gotoUserInfo()"><p class="userdropdown">User Info</p></button>
-            <button (click)="gotoChangePassword()"><p class="userdropdown">Change Password</p></button>
-            <button (click)="onLogout()"><p class="userdropdown">Logout</p></button>
-          </div>
-        </ng-template>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-title"><a href="/">GROUP2</a></div>
+      <ul class="navbar-menu">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/category">Loại thiết bị</a></li>
+        <li><a href="/status">Tình trạng thiết bị</a></li>
+        <li><a href="/device">Thiết bị</a></li>
+        <li><a href="/schedule">Lịch hoạt động</a></li>
+        <li><a href="/history">Lịch sử</a></li>
+      </ul>
+    </div>
+
+    <div class="navbar-actions">
+      <!-- before login -->
+      <ng-container *ngIf="!userService.isLoggedIn(); else LoggedInTemplate">
+        <a href="/login"><button (click)="gotoLogin()">Sign In</button></a>
+        <a href="/signup"><button (click)="gotoSignup()">Sign Up</button></a>
+      </ng-container>
+      <!-- after login -->
+      <ng-template #LoggedInTemplate>
+        <div class="user-avatar" (click)="showDropdown = !showDropdown">
+          <img src="../../../assets/avartar-anime-6.jpg" alt="User Avatar" />
+        </div>
+        <div *ngIf="showDropdown" class="dropdown-menu">
+          <button (click)="gotoUserInfo()">
+            <p class="userdropdown">User Info</p>
+          </button>
+          <button (click)="gotoChangePassword()">
+            <p class="userdropdown">Change Password</p>
+          </button>
+          <button (click)="onLogout()">
+            <p class="userdropdown">Logout</p>
+          </button>
+        </div>
+      </ng-template>
 
 
- 
-      </div>
-    </nav>
-  </header>
-  
+
+    </div>
+  </nav>
+</header>

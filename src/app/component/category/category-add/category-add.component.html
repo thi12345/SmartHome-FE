@@ -1,0 +1,8 @@
+<app-category-header></app-category-header>
+<form #myForm="ngForm" (ngSubmit)="addCategory(myForm)">
+  <div class="form-add">
+    <label for="name" class="form-add-label required" id="name">Tên loại thiết bị:</label>
+    <input id="name" [(ngModel)]="newCategory.name" name="name" class="form-add-left input-name" required />
+  </div>
+  <button type="submit" class="form-add-sub">Thêm loại thiết bị</button>
+</form>

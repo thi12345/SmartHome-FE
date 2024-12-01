@@ -1,0 +1,13 @@
+.status-header{
+    margin-top: 20px;
+    margin-left: 200px;
+}
+.status-header-title{
+    text-decoration: none;
+    color: #000;
+    font-size: large;
+    font-weight: bold;
+}
+.status-header-space{
+    margin-left: 80px;
+}

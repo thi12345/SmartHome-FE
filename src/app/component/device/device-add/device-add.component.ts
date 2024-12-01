@@ -1,51 +1,73 @@
-import { Component , OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DeviceHeaderComponent } from '../device-header/device-header.component';
-import { HeaderComponent } from "../../header/header.component";
 import { DeviceService } from '../../../share/device.service';
 
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryService } from '../../../share/category.service';
+import { StatusService } from '../../../share/status.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-device-add',
   standalone: true,
-  imports: [DeviceHeaderComponent, HeaderComponent, FormsModule, HttpClientModule, CommonModule],
-  providers: [DeviceService, CategoryService],
+  imports: [DeviceHeaderComponent, FormsModule, HttpClientModule, CommonModule],
+  providers: [DeviceService, CategoryService, StatusService],
   templateUrl: './device-add.component.html',
   styleUrl: './device-add.component.css'
 })
 export class DeviceAddComponent implements OnInit {
-  devices: any[] = [];
   categories: any[] = [];
+  statuses: any[] = [];
   newDevice: any = {
     name: '',
     statusDetail: '',
     description: '',
     isActive: false,
     category: { id: 0, name: '' },
-    status: { id: 0, desciption: '' },
+    status: { id: 0, description: '' },
     energy: 0,
   };
 
   //  constructor(private deviceService: DeviceService) {}
-  constructor(private deviceService: DeviceService, private categoryService: CategoryService) { }
+  constructor(private deviceService: DeviceService,
+    private categoryService: CategoryService,
+    private statusService: StatusService,
+    private router: Router
+  ) { }
 
-  addDevice(): void{
-    this.deviceService.addDevice(this.newDevice).subscribe((result) => {
-      console.log('Device added successfully:', result);
+  addDevice(form: any): void {
+    if (form.valid) {
 
-      // Reset form hoặc điều hướng người dùng
-    });
-    
+      if (this.newDevice.energy < 0) {
+        alert('Mức năng lượng không được nhỏ hơn 0');
+      }
+      else {
+        this.deviceService.addDevice(this.newDevice).subscribe((result) => {
+          alert('Thêm thiết bị thành công');
+          this.router.navigate(['/device']);
+        });
+      }
+
+    }
+    else { alert('Điền vào tất cả các trường bắt buộc'); }
+
+
   }
   ngOnInit(): void {
     this.fetchCategories();
+    this.fetchStatuses();
   }
   fetchCategories(): void {
     this.categoryService.getCategories().subscribe((data) => {
       this.categories = data;
+    });
+  }
+
+  fetchStatuses(): void {
+    this.statusService.getStatuses().subscribe((data) => {
+      this.statuses = data;
     });
   }
 

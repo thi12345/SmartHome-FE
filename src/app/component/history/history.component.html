@@ -1,21 +1,24 @@
 <app-header></app-header>
 <div class="history-table">
-    <table>
-        <thead>
-          <tr>
-            <th class="td-1">Device Name</th>
-            <th class="td-2">Time</th>
-            <th class="td-3">Energy</th>
-            <th class="td-4">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let record of historyRecords">
-              <td class="td-1">{{ record.device.name }}</td>
-              <td class="td-2">{{ record.time | date: 'dd/MM/yyyy HH:mm' }}</td>
-              <td class="td-3">{{ record.device.energy }}</td>
-              <td class="delete td-3" (click)="deleteRecord(record)"><img src="../../../assets/delete-button-removebg-preview.png" class="delete-button"></td>
-            </tr>
-          </tbody>
-    </table>
+  <table>
+    <thead>
+      <tr>
+        <th class="td-1">Tên thiết bị</th>
+        <th class="td-2">Thời gian</th>
+        <th class="td-3">Thao tác</th>
+        <th class="td-4">Giá trị</th>
+        <th class="delete">Xóa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of historyRecords">
+        <td class="td-1">{{ record.device.name }}</td>
+        <td class="td-2">{{ record.time | date: 'dd/MM/yyyy HH:mm' }}</td>
+        <td class="td-3">{{ isOnOff[record.device.isActive.toString()] }}</td>
+        <th class="td-4">{{ record.value }}</th>
+        <td class="delete" (click)="deleteRecord(record)"><img src="../../../assets/delete-button-removebg-preview.png"
+            class="delete-button"></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

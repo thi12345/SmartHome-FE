@@ -1,0 +1,22 @@
+<app-schedule-header></app-schedule-header>
+<div class="container">
+  <div *ngFor="let schedule of schedules" class="row">
+    <div class="schedule-container">
+      <div class="schedule-view-title-line">
+        <label class="schedule-view-title view-time">Thời gian</label>
+        <label class="schedule-view-title schedule-view-title-left view-action">Thao tác </label>
+        <label class="schedule-view-title schedule-view-title-left view-value">Giá trị</label>
+        <label class="schedule-view-title schedule-view-title-left view-device">Thiết bị</label>
+      </div>
+      <div class="schedule-view-data-line">
+        <h3 class="deivce-view-data view-time">{{schedule.time}}</h3>
+        <h3 class="deivce-view-data deivce-view-data-left view-action">{{isOnOff[(schedule.action.toString())]}}</h3>
+        <h3 class="deivce-view-data deivce-view-data-left view-value">{{schedule.value}}</h3>
+        <h3 class="deivce-view-data deivce-view-data-left view-device">{{schedule.device.name}}</h3>
+        <button class="schedule-view-button" (click)="goToUpdate(schedule.id)">Cập nhật</button>
+        <button class="schedule-view-button schedule-view-button-left"
+          (click)="deleteSchedule(schedule.id)">Xóa</button>
+      </div>
+    </div>
+
+  </div>

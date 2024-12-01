@@ -1,0 +1,8 @@
+<app-status-header></app-status-header>
+<form #myForm="ngForm" (ngSubmit)="addStatus(myForm)">
+  <div class="form-add">
+    <label for="name" class="form-add-label required" id="name">Tình trạng thiết bị:</label>
+    <input id="name" [(ngModel)]="newStatus.description" name="name" class="form-add-left input-name" required />
+  </div>
+  <button type="submit" class="form-add-sub">Thêm tình trạng thiết bị</button>
+</form>

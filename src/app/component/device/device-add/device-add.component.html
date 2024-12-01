@@ -1,22 +1,41 @@
-<app-header></app-header>
 <app-device-header></app-device-header>
-<form (ngSubmit)="addDevice()">
+<form #myForm="ngForm" (ngSubmit)="addDevice(myForm)">
   <div class="form-add">
-    <label for="name" class="form-add-label">Tên thiết bị:</label>
+    <label for="name" class="form-add-label required" id="name">Tên thiết bị:</label>
     <input id="name" [(ngModel)]="newDevice.name" name="name" class="form-add-left input-name" required />
   </div>
   <div class="form-add">
-    <label for="category" class="form-add-label">Loại thiết bị:</label>
-  <select [(ngModel)]="newDevice.category.id" name="category"  class="form-add-left" required>
-    <option class="category-name" *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
-  </select>
+    <label for="category" class="form-add-label required">Loại thiết bị:</label>
+    <select [(ngModel)]="newDevice.category.id" name="category" class="form-add-left" required>
+      <option class="category-name" *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}
+      </option>
+    </select>
   </div>
 
-<div class="form-add">
-  <label for="description" class="form-add-label">Mô tả:</label>
-  <input id="description" [(ngModel)]="newDevice.description"  class="form-add-left input-name" name="description" />
-</div>
-  
+  <div class="form-add">
+    <label for="status" class="form-add-label required">Tình trạng thiết bị:</label>
+    <select [(ngModel)]="newDevice.status.id" name="status" class="form-add-left" required>
+      <option class="category-name" *ngFor="let status of statuses" [ngValue]="status.id">{{status.description}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-add">
+    <label for="statusDetail" class="form-add-label">Chi tiết tình trạng thiết bị:</label>
+    <input id="statusDetail" [(ngModel)]="newDevice.statusDetail" class="form-add-left input-name"
+      name="statusDetail" />
+  </div>
+
+  <div class="form-add">
+    <label for="description" class="form-add-label">Mô tả:</label>
+    <input id="description" [(ngModel)]="newDevice.description" class="form-add-left input-name" name="description" />
+  </div>
+
+  <div class="form-add">
+    <label for="energy" class="form-add-label">Mức năng lượng (W):</label>
+    <input id="energy" [(ngModel)]="newDevice.energy" class="form-add-left input-name" name="energy" type="number">
+  </div>
+
 
 
   <button type="submit" class="form-add-sub">Thêm thiết bị</button>

@@ -1,0 +1,12 @@
+<app-status-header></app-status-header>
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <div class="form-update">
+        <label for="name" class="form-update-label required" id="name">Tên loaị thiết bị:</label>
+        <input id="name" [(ngModel)]="newStatus.description" name="name" class="form-add-left input-name" required />
+    </div>
+    <div class="button">
+        <button class="update-button" type="submit">Cập nhật</button>
+        <button class="update-button" type="button" (click)="onCancel()">Hủy bỏ</button>
+    </div>
+
+</form>

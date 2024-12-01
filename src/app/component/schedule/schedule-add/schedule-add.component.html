@@ -1,0 +1,33 @@
+<app-schedule-header></app-schedule-header>
+<form #myForm="ngForm" (ngSubmit)="addSchedule(myForm)">
+  <div class="form-add">
+    <label for="time" class="form-add-label required" id="time">Thời gian:</label>
+    <input id="time" [(ngModel)]="newSchedule.time" name="time" class="form-add-left input-name" required
+      type="datetime-local" />
+  </div>
+
+
+  <div class="form-add">
+    <label for="action" class="form-add-label required">Thao tác:</label>
+    <select [(ngModel)]="newSchedule.action" name="action" class="form-add-left" required>
+      <option class="device-name" *ngFor="let act of [true,false]" [ngValue]="act">{{turnOnOff[act.toString()]}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-add">
+    <label for="value" class="form-add-label">Giá trị:</label>
+    <input id="value" [(ngModel)]="newSchedule.value" class="form-add-left input-name" name="value" type="number" />
+  </div>
+
+
+  <div class="form-add">
+    <label for="device" class="form-add-label required">Thiết bị:</label>
+    <select [(ngModel)]="newSchedule.device.id" name="device" class="form-add-left" required>
+      <option class="device-name" *ngFor="let device of devices" [ngValue]="device.id">{{device.name}}
+      </option>
+    </select>
+  </div>
+
+  <button type="submit" class="form-add-sub">Thêm lịch hoạt động</button>
+</form>

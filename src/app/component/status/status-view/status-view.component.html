@@ -1,0 +1,14 @@
+<app-status-header></app-status-header>
+<div class="container">
+  <div *ngFor="let status of categories" class="row">
+    <div class="status-container">
+      <div class="status-view-title-line">
+        <label class="status-view-title view-name">Tình trạng</label>
+      </div>
+      <div class="status-view-data-line">
+        <h3 class="status-view-data view-name">{{status.description}}</h3>
+        <button class="status-view-button" (click)="goToUpdate(status.id)">Cập nhật</button>
+        <button class="status-view-button status-view-button-left" (click)="deleteStatus(status.id)">Xóa</button>
+      </div>
+
+    </div>
