@@ -1,15 +1,25 @@
 <app-header></app-header>
 <div class="content">
+
+  <div class="humidity">
+    <h3>Time</h3>
+    <img src="../../../assets/clock.png" alt="Clock Icon"
+      class="home-image humi-image" />
+    <p>{{currentDateTime}}</p>
+
+  </div>
+
 <div class="temperature">
     <h3>Temperature</h3>
-    <img src="../../../assets/pngtree-thermometer-line-icon-png-image_9011502.png" alt="Temperature Icon" class="home-image temp-image"/>
-    <p>29 °C</p>
+    <img src="../../../assets/pngtree-thermometer-line-icon-png-image_9011502.png" alt="Temperature Icon" class="rounded mx-auto d-block home-image"/>
+    <!-- <i class="bi bi-thermometer"></i> -->
+    <p>{{temp}} °C</p>
   </div>
-  <div class="humidity">
+  <!-- <div class="humidity">
     <h3>Humidity</h3>
     <img src="../../../assets/pngtree-humidity-vector-icon-png-image_3725331-removebg-preview.png" alt="Humidity Icon" class="home-image humi-image"/>
     <p>30%</p>
-  </div>
+  </div> -->
 </div>
 
 

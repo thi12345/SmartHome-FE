@@ -1,2 +1,12 @@
 <app-header></app-header>
-<p>dashboard works!</p>
+
+<div id="chart">
+  <apx-chart
+  [series]="chartOptions.series || []"
+  [chart]="chartOptions.chart || { height: 0, type: 'line' }"
+  [xaxis]="chartOptions.xaxis || {categories: []}"
+  [dataLabels]="chartOptions.dataLabels || { enabled: false }"
+  [grid]="chartOptions.grid || { row: { colors: ['#f3f3f3', 'transparent'], opacity: 0.5 } }"
+  [stroke]="chartOptions.stroke || { curve: 'straight' }"
+  [title]="chartOptions.title || { text: '', align: 'left' }"></apx-chart>
+</div>
