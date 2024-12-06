@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { LogService } from '../../share/log.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-history',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, HttpClientModule],
+  imports: [CommonModule, HeaderComponent, HttpClientModule, FooterComponent],
   providers: [LogService],
   templateUrl: './history.component.html',
   styleUrl: './history.component.css'

@@ -1,14 +1,18 @@
-.form-add{
-    margin-left:200px;
+.form-add {
+  margin-left: 200px;
     margin-top: 20px;
     display: flex;
 }
-.form-add-label{
-    width: 200px;
-    font-size: 24px;
+
+.form-add-label {
+  width: 300px;
+  font-size: 24px;
 
 }
 
+.label-length {
+  width: 200px;
+}
 
 .form-add-sub{
     margin-left:400px;
@@ -26,4 +30,13 @@
 
 .required::after {
     content: ' *'; color: red; font-weight: bold;
+}
+.btn-status {
+  margin-top: 20px;
+  margin-left: 500px;
+}
+
+.form-status {
+
+  width: 400px;
 }

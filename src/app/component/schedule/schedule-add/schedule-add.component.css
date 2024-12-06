@@ -4,17 +4,13 @@
     display: flex;
 }
 .form-add-label{
-    width: 200px;
+    width: 300px;
     font-size: 24px;
 
 }
 
 
-.form-add-sub{
-    margin-left:400px;
-    margin-top: 20px;
-    font-size: 20px;
-}
+
 .device-name{
     font-size: 16px;
 }
@@ -26,4 +22,22 @@
 
 .required::after {
     content: ' *'; color: red; font-weight: bold;
+}
+.form-control-datetime{
+  width: 300px;
+}
+.form-select
+{
+  width: 100px;
+}
+.form-control-value{
+  width: 150px;
+}
+.form-select-device{
+  width: 200px;
+}
+.form-add-sub {
+  margin-left: 500px;
+  margin-top: 20px;
+
 }

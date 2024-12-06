@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrl: './status-view.component.css'
 })
 export class StatusViewComponent implements OnInit {
-  categories: Status[] = [];
+  statuses: Status[] = [];
   constructor(
     private statusService: StatusService, private router: Router) { }
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class StatusViewComponent implements OnInit {
   }
   fetchStatuses(): void {
     this.statusService.getStatuses().subscribe((data: any) => {
-      this.categories = data;
+      this.statuses = data;
     });
   }
 

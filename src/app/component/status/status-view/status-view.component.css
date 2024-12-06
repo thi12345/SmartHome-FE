@@ -1,4 +1,4 @@
-.status-container{
+/* .status-container{
     width: 60%;
     height: 150px;
     background-color: aliceblue;
@@ -14,7 +14,7 @@
     justify-content: space-around;
     font-size: 24px;
     margin-left: 80px;
-   
+
 }
 .status-view-title-left{
     margin-left: 100px;
@@ -26,7 +26,7 @@
 }
 .status-view-data{
 
-  
+
     justify-content: space-around;
 
 }
@@ -42,7 +42,7 @@
     width: 60px;
 }
 .view-status{
-   
+
     width: 200px;
 }
 
@@ -53,4 +53,17 @@
 
     .status-view-button-left{
         margin-left: 20px;
-    }
+    } */
+        .card {
+          padding: 0;
+          width: 800px;
+          margin-bottom: 20px;
+          margin-top: 20px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .card-flex {
+          display: flex;
+          justify-content: space-between;
+        }

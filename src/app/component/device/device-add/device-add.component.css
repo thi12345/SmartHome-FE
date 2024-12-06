@@ -4,17 +4,13 @@
     display: flex;
 }
 .form-add-label{
-    width: 200px;
+    width: 400px;
     font-size: 24px;
 
 }
 
 
-.form-add-sub{
-    margin-left:400px;
-    margin-top: 20px;
-    font-size: 20px;
-}
+
 .category-name{
     font-size: 16px;
 }
@@ -26,4 +22,18 @@
 
 .required::after {
     content: ' *'; color: red; font-weight: bold;
+}
+.form-control
+{
+  width: 600px;
+}
+.form-add-sub {
+  margin-left: 600px;
+  margin-top: 20px;
+
+}
+.form-select{width: 100px;}
+.form-select-length{width: 150px;}
+.form-control-length{
+  width: 100px;
 }

@@ -1,15 +1,30 @@
 <app-category-header></app-category-header>
-<div class="container">
+<div class="container ">
   <div *ngFor="let category of categories" class="row">
-    <div class="category-container">
-      <div class="category-view-title-line">
-        <label class="category-view-title view-name">Tên</label>
-      </div>
-      <div class="category-view-data-line">
-        <h3 class="category-view-data view-name">{{category.name}}</h3>
-        <button class="category-view-button" (click)="goToUpdate(category.id)">Cập nhật</button>
-        <button class="category-view-button category-view-button-left"
-          (click)="deleteCategory(category.id)">Xóa</button>
-      </div>
 
+    <div class="card ">
+      <div class="card-header">Tên thiết bị</div>
+      <div class="card-body">
+        <div class="card-flex">
+            <h5 class="card-title">{{category.name}}</h5>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button class="btn btn-warning" (click)="goToUpdate(category.id)">Cập nhật</button>
+              <button class="btn btn-danger" (click)="deleteCategory(category.id)">Xóa</button>
+            </div>
+        </div>
+      </div>
     </div>
+</div>
+
+    <!-- <div class="category-container">
+          <div class="category-view-title-line">
+            <label class="category-view-title view-name">Tên</label>
+          </div>
+          <div class="category-view-data-line">
+            <h3 class="category-view-data view-name">{{category.name}}</h3>
+            <button class="btn btn-warning" (click)="goToUpdate(category.id)">Cập nhật</button>
+            <button class="btn btn-danger"
+              (click)="deleteCategory(category.id)">Xóa</button>
+          </div>
+        </div>
+      </div>-->

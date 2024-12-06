@@ -1,24 +1,25 @@
 <app-header></app-header>
-<div class="history-table">
-  <table>
+<!-- <div class="history-table"> -->
+<div class="container mt-3">
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th class="td-1">Tên thiết bị</th>
-        <th class="td-2">Thời gian</th>
-        <th class="td-3">Thao tác</th>
-        <th class="td-4">Giá trị</th>
-        <th class="delete">Xóa</th>
+              <th scope="col">Tên thiết bị</th>
+              <th scope="col">Thời gian</th>
+              <th scope="col">Thao tác</th>
+              <th scope="col">Giá trị</th>
+              <th scope="col">Xóa</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let record of historyRecords">
-        <td class="td-1">{{ record.device.name }}</td>
-        <td class="td-2">{{ record.time | date: 'dd/MM/yyyy HH:mm' }}</td>
-        <td class="td-3">{{ isOnOff[record.device.isActive.toString()] }}</td>
-        <th class="td-4">{{ record.value }}</th>
-        <td class="delete" (click)="deleteRecord(record)"><img src="../../../assets/delete-button-removebg-preview.png"
-            class="delete-button"></td>
+        <td >{{ record.device.name }}</td>
+        <td >{{ record.time | date: 'dd/MM/yyyy HH:mm' }}</td>
+        <td>{{ isOnOff[record.device.isActive.toString()] }}</td>
+        <td>{{ record.value }}</td>
+        <td ><button class="btn btn-danger" (click)="deleteRecord(record)">Xóa</button></td>
       </tr>
     </tbody>
   </table>
 </div>
+<!-- <app-footer></app-footer> -->

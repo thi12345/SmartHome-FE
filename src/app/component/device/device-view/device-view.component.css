@@ -14,7 +14,7 @@
     justify-content: space-around;
     font-size: 24px;
     margin-left: 80px;
-   
+
 }
 .device-view-title-left{
     margin-left: 100px;
@@ -26,7 +26,7 @@
 }
 .device-view-data{
 
-  
+
     justify-content: space-around;
 
 }
@@ -42,7 +42,7 @@
     width: 60px;
 }
 .view-status{
-   
+
     width: 200px;
 }
 
@@ -54,3 +54,9 @@
     .device-view-button-left{
         margin-left: 20px;
     }
+
+    .card{
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+

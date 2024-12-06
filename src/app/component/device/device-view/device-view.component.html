@@ -1,29 +1,69 @@
 <app-device-header></app-device-header>
 <div class="container">
   <div *ngFor="let device of devices" class="row">
-    <div class="device-container">
-      <div class="device-view-title-line">
-        <label class="device-view-title view-name">Tên</label>
-        <label class="device-view-title device-view-title-left view-type">Loại </label>
-        <label class="device-view-title device-view-title-left view-status">Trạng thái</label>
-        <label class="device-view-title device-view-title-left view-statusDetail">Chi tiết trạng thái</label>
-        <label class="device-view-title device-view-title-left view-description">Mô tả</label>
-        <label class="device-view-title device-view-title-left view-energy">Mức tiêu thụ (W)</label>
-        <label class="device-view-title device-view-title-left view-isActive">Đang bật/Đang tắt</label>
-      </div>
-      <div class="device-view-data-line">
-        <h3 class="deivce-view-data view-name">{{device.name}}</h3>
-        <h3 class="deivce-view-data deivce-view-data-left view-type">{{device.category.name}}</h3>
-        <h3 class="deivce-view-data deivce-view-data-left view-status">{{device.status.description}}</h3>
-        <h3 class="deivce-view-data deivce-view-data-left view-statusDetail">{{device.statusDetail}}</h3>
-        <h3 class="deivce-view-data deivce-view-data-left view-description">{{device.description}}</h3>
-        <h3 class="deivce-view-data deivce-view-data-left view-energy">{{device.energy}}</h3>
-        <h3 class="deivce-view-data deivce-view-data-left view-isActive">{{isOnOff[device.isActive.toString()]}}</h3>
-        <button class="device-view-button" (click)="goToUpdate(device.id)">Cập nhật</button>
-        <button class="device-view-button device-view-button-left" (click)="deleteDevice(device.id)">Xóa</button>
-        <button class="device-view-button device-view-button-left-left"
-          (click)="turnOnOff(device.id)">{{OnOff[(device.isActive).toString()]}}</button>
-      </div>
-    </div>
+    <div class="card">
+      <table class="table table-borderless">
+      <thead>
+      <tr >
+        <th scope="col">Tên</th>
+        <th scope="col">Loại</th>
+        <th scope="col">Trạng thái</th>
+        <th scope="col">Chi tiết trạng thái</th>
+        <th scope="col">Mô tả</th>
+        <th scope="col">Mức tiêu thụ (W)</th>
+        <th scope="col">Tình trạng hoạt động</th>
+        <th scope="col">Hành động</th>
+      </tr>
+        </thead>
+        <tbody >
+        <tr>
+          <th>{{device.name}}</th>
+          <th>{{device.category.name}}</th>
+          <th>{{device.status.description}}</th>
+          <th>{{device.statusDetail}}</th>
+          <th>{{device.description}}</th>
+          <th>{{device.energy}}</th>
+          <th>{{isOnOff[device.isActive.toString()]}}</th>
+          <th>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-warning" (click)="goToUpdate(device.id)">Sửa</button>
+              <button type="button" class="btn btn-danger" (click)="deleteDevice(device.id)">Xóa</button>
+              <button type="button" (click)="turnOnOff(device.id)" class="btn btn-primary">{{OnOff[(device.isActive).toString()]}}</button>
 
+            </div>
+          </th>
+        </tr>
+
+
+        </tbody>
+      </table>
+
+    </div>
   </div>
+  </div>
+
+
+  <!-- <div class="device-container">
+    <div class="device-view-title-line">
+      <label class="device-view-title view-name">Tên</label>
+      <label class="device-view-title device-view-title-left view-type">Loại </label>
+      <label class="device-view-title device-view-title-left view-status">Trạng thái</label>
+      <label class="device-view-title device-view-title-left view-statusDetail">Chi tiết trạng thái</label>
+      <label class="device-view-title device-view-title-left view-description">Mô tả</label>
+      <label class="device-view-title device-view-title-left view-energy">Mức tiêu thụ (W)</label>
+      <label class="device-view-title device-view-title-left view-isActive">Đang bật/Đang tắt</label>
+    </div>
+    <div class="device-view-data-line">
+      <h3 class="deivce-view-data view-name">{{device.name}}</h3>
+      <h3 class="deivce-view-data deivce-view-data-left view-type">{{device.category.name}}</h3>
+      <h3 class="deivce-view-data deivce-view-data-left view-status">{{device.status.description}}</h3>
+      <h3 class="deivce-view-data deivce-view-data-left view-statusDetail">{{device.statusDetail}}</h3>
+      <h3 class="deivce-view-data deivce-view-data-left view-description">{{device.description}}</h3>
+      <h3 class="deivce-view-data deivce-view-data-left view-energy">{{device.energy}}</h3>
+      <h3 class="deivce-view-data deivce-view-data-left view-isActive">{{isOnOff[device.isActive.toString()]}}</h3>
+      <button class="device-view-button" (click)="goToUpdate(device.id)">Cập nhật</button>
+      <button class="device-view-button device-view-button-left" (click)="deleteDevice(device.id)">Xóa</button>
+      <button class="device-view-button device-view-button-left-left"
+        (click)="turnOnOff(device.id)">{{OnOff[(device.isActive).toString()]}}</button>
+    </div>
+  </div> -->

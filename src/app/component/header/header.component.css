@@ -1,4 +1,4 @@
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,7 +32,7 @@
   gap: 20px;
   align-items: center;
 
-} 
+}
 .navbar-menu {
   list-style: none;
   display: flex;
@@ -106,4 +106,9 @@
 .userdropdown{
   color: #000;
   margin: 0;
+} */
+
+.navbar{
+  margin: 0;
+
 }
