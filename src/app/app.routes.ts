@@ -28,7 +28,7 @@ import { StatusUpdateComponent } from './component/status/status-update/status-u
 
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'user-info', component: UserInfoComponent },
     { path: 'login', component: LoginComponent },

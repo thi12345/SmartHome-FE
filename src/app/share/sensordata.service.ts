@@ -17,10 +17,15 @@ export interface SenSorData{
   providedIn: 'root',
 })
 export class SensorDataService{
-  private baseUrl = '';
 
+
+  private nhietdo ='';
+  private doam='';
   constructor(private http: HttpClient) { }
-  getSenSorData(): Observable<SenSorData[]>{
-    return this.http.get<SenSorData[]>(this.baseUrl);
+  getNhietdoData(): Observable<SenSorData[]>{
+    return this.http.get<SenSorData[]>(this.nhietdo);
+  }
+  getDoamData(): Observable<SenSorData[]>{
+    return this.http.get<SenSorData[]>(this.doam);
   }
 }
