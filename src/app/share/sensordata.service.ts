@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { Observable } from "rxjs";
 
-export interface SenSorData{
+export interface SenSorData {
   id: string; // ID của dữ liệu
   value: string; // Giá trị cảm biến (ở đây là nhiệt độ)
   feed_id: number; // ID của feed
@@ -16,16 +16,16 @@ export interface SenSorData{
 @Injectable({
   providedIn: 'root',
 })
-export class SensorDataService{
+export class SensorDataService {
 
 
-  private nhietdo ='';
-  private doam='';
+  private nhietdo = '';
+  private doam = '';
   constructor(private http: HttpClient) { }
-  getNhietdoData(): Observable<SenSorData[]>{
+  getNhietdoData(): Observable<SenSorData[]> {
     return this.http.get<SenSorData[]>(this.nhietdo);
   }
-  getDoamData(): Observable<SenSorData[]>{
+  getDoamData(): Observable<SenSorData[]> {
     return this.http.get<SenSorData[]>(this.doam);
   }
 }

@@ -14,15 +14,22 @@ export interface Device {
   status: Status;
   energy: number;
 }
+
+export interface Payload {
+  device: Device,
+  value: number,
+  action: boolean
+}
 @Injectable({
   providedIn: 'root',
 })
-export class DeviceService{
+export class DeviceService {
   private apiUrl = 'http://localhost:8080/api/device';
+  private switchDeviceURL = 'http://localhost:8080/api/device/switchDevice'
 
 
-  constructor(private http: HttpClient){ }
-  getDevices(): Observable<Device[]>{
+  constructor(private http: HttpClient) { }
+  getDevices(): Observable<Device[]> {
     return this.http.get<Device[]>(`${this.apiUrl}`);
   }
 
@@ -33,6 +40,11 @@ export class DeviceService{
   // Thêm thiết bị mới
   addDevice(device: Device): Observable<Device> {
     return this.http.post<Device>(`${this.apiUrl}`, device);
+  }
+
+  switchDevice(payload: Payload): Observable<any> {
+    return this.http.post<any>(`${this.switchDeviceURL}`, payload);
+
   }
 
   // Cập nhật thông tin thiết bị

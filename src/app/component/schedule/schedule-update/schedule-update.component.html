@@ -8,6 +8,15 @@
 
 
     <div class="form-update">
+        <label for="device" class="form-update-label required">Thiết bị:</label>
+        <select [(ngModel)]="selectedDevice" name="device" class="form-add-left" required
+            (ngModelChange)="onSelectChange()">
+            <option *ngFor="let device of devices" [ngValue]="device">{{device.name}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-update">
         <label for="action" class="form-update-label required">Thao tác:</label>
         <select [(ngModel)]="newSchedule.action" name="action" class="form-add-left" required>
             <option *ngFor="let act of [true,false]" [ngValue]="act">{{turnOnOff[act.toString()]}}
@@ -17,17 +26,13 @@
 
     <div class="form-update">
         <label for="value" class="form-update-label">Giá trị:</label>
-        <input id="value" [(ngModel)]="newSchedule.value" class="form-add-left input-name" name="value" type="number" />
-    </div>
-
-
-    <div class="form-update">
-        <label for="device" class="form-update-label required">Thiết bị:</label>
-        <select [(ngModel)]="newSchedule.device.id" name="device" class="form-add-left" required>
-            <option *ngFor="let device of devices" [ngValue]="device.id">{{device.name}}
+        <select [(ngModel)]="newSchedule.value" name="action">
+            <option *ngFor="let value of values" [ngValue]="value.pos">{{value.name}}
             </option>
         </select>
     </div>
+
+
 
     <div class="button"><button class="update-button" type="submit">Cập nhật</button>
         <button class="update-button" type="button" (click)="onCancel()">Hủy bỏ</button>

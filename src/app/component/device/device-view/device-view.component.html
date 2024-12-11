@@ -3,36 +3,74 @@
   <div *ngFor="let device of devices" class="row">
     <div class="card">
       <table class="table table-borderless">
-      <thead>
-      <tr >
-        <th scope="col">Tên</th>
-        <th scope="col">Loại</th>
-        <th scope="col">Trạng thái</th>
-        <th scope="col">Chi tiết trạng thái</th>
-        <th scope="col">Mô tả</th>
-        <th scope="col">Mức tiêu thụ (W)</th>
-        <th scope="col">Tình trạng hoạt động</th>
-        <th scope="col">Hành động</th>
-      </tr>
+        <thead>
+          <tr>
+            <th scope="col">Tên</th>
+            <th scope="col">Loại</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Chi tiết trạng thái</th>
+            <th scope="col">Mô tả</th>
+            <th scope="col">Mức tiêu thụ (W)</th>
+            <th scope="col">Tình trạng hoạt động</th>
+            <th scope="col">Hành động</th>
+          </tr>
         </thead>
-        <tbody >
-        <tr>
-          <th>{{device.name}}</th>
-          <th>{{device.category.name}}</th>
-          <th>{{device.status.description}}</th>
-          <th>{{device.statusDetail}}</th>
-          <th>{{device.description}}</th>
-          <th>{{device.energy}}</th>
-          <th>{{isOnOff[device.isActive.toString()]}}</th>
-          <th>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-warning" (click)="goToUpdate(device.id)">Sửa</button>
-              <button type="button" class="btn btn-danger" (click)="deleteDevice(device.id)">Xóa</button>
-              <button type="button" (click)="turnOnOff(device.id)" class="btn btn-primary">{{OnOff[(device.isActive).toString()]}}</button>
+        <tbody>
+          <tr>
+            <th>{{device.name}}</th>
+            <th>{{device.category.name}}</th>
+            <th>{{device.status.description}}</th>
+            <th>{{device.statusDetail}}</th>
+            <th>{{device.description}}</th>
+            <th>{{device.energy}}</th>
+            <th>{{isOnOff[device.isActive.toString()]}}</th>
+            <th>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-warning" (click)="goToUpdate(device.id)">Sửa</button>
+                <button type="button" class="btn btn-danger" (click)="deleteDevice(device.id)">Xóa</button>
+                <button (click)="openModal(device)"
+                  [disabled]="(device.status.description != 'Bình thường' || device.category.name == 'Cảm biến')">Bật/Tắt</button>
 
-            </div>
-          </th>
-        </tr>
+                <!-- Bootstrap Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Form</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Giá trị:</label>
+                            <select [(ngModel)]="payload.value" name="action">
+                              <option *ngFor="let value of values" [ngValue]="value.pos">{{value.name}}
+                              </option>
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Bật/Tắt:</label>
+                            <select [(ngModel)]="payload.action" name="action">
+                              <option *ngFor="let action of actions" [ngValue]="action.value">{{action.name}}
+                              </option>
+                            </select>
+
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="submitForm()">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </th>
+          </tr>
 
 
         </tbody>
@@ -40,10 +78,10 @@
 
     </div>
   </div>
-  </div>
+</div>
 
 
-  <!-- <div class="device-container">
+<!-- <div class="device-container">
     <div class="device-view-title-line">
       <label class="device-view-title view-name">Tên</label>
       <label class="device-view-title device-view-title-left view-type">Loại </label>

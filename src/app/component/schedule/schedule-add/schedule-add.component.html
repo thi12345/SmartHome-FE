@@ -6,6 +6,14 @@
       type="datetime-local" />
   </div>
 
+  <div class="form-add">
+    <label for="device" class="form-add-label required">Thiết bị:</label>
+    <select [(ngModel)]="selectedDevice" name="device" class="form-select form-select-device" required
+      (ngModelChange)="onSelectChange()">
+      <option class="device-name" *ngFor="let device of devices" [ngValue]="device">{{device.name}}
+      </option>
+    </select>
+  </div>
 
   <div class="form-add">
     <label for="action" class="form-add-label required">Thao tác:</label>
@@ -17,17 +25,14 @@
 
   <div class="form-add">
     <label for="value" class="form-add-label">Giá trị:</label>
-    <input id="value" [(ngModel)]="newSchedule.value" class="form-control form-control-value" name="value" type="number" />
-  </div>
-
-
-  <div class="form-add">
-    <label for="device" class="form-add-label required">Thiết bị:</label>
-    <select [(ngModel)]="newSchedule.device.id" name="device" class="form-select form-select-device" required>
-      <option class="device-name" *ngFor="let device of devices" [ngValue]="device.id">{{device.name}}
+    <select [(ngModel)]="newSchedule.value" name="action">
+      <option *ngFor="let value of values" [ngValue]="value.pos">{{value.name}}
       </option>
     </select>
   </div>
+
+
+
 
   <button type="submit" class="btn btn-primary form-add-sub">Thêm lịch hoạt động</button>
 </form>
