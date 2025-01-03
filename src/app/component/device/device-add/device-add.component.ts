@@ -6,14 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryService } from '../../../share/category.service';
-import { StatusService } from '../../../share/status.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-device-add',
   standalone: true,
   imports: [DeviceHeaderComponent, FormsModule, HttpClientModule, CommonModule],
-  providers: [DeviceService, CategoryService, StatusService],
+  providers: [DeviceService, CategoryService],
   templateUrl: './device-add.component.html',
   styleUrl: './device-add.component.css'
 })
@@ -33,7 +32,6 @@ export class DeviceAddComponent implements OnInit {
   //  constructor(private deviceService: DeviceService) {}
   constructor(private deviceService: DeviceService,
     private categoryService: CategoryService,
-    private statusService: StatusService,
     private router: Router
   ) { }
 
@@ -57,7 +55,6 @@ export class DeviceAddComponent implements OnInit {
   }
   ngOnInit(): void {
     this.fetchCategories();
-    this.fetchStatuses();
   }
   fetchCategories(): void {
     this.categoryService.getCategories().subscribe((data) => {
@@ -65,10 +62,5 @@ export class DeviceAddComponent implements OnInit {
     });
   }
 
-  fetchStatuses(): void {
-    this.statusService.getStatuses().subscribe((data) => {
-      this.statuses = data;
-    });
-  }
 
 }

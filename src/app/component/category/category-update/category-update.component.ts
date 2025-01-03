@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryHeaderComponent } from '../category-header/category-header.component';
 import { CategoryService, Category } from '../../../share/category.service';
 import { HttpClientModule } from '@angular/common/http';
-import { Status, StatusService } from '../../../share/status.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -13,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-category-update',
   standalone: true,
   imports: [CategoryHeaderComponent, HttpClientModule, CommonModule, FormsModule],
-  providers: [CategoryService, StatusService, CategoryService],
+  providers: [CategoryService, CategoryService],
   templateUrl: './category-update.component.html',
   styleUrl: './category-update.component.css'
 })

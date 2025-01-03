@@ -13,20 +13,6 @@
     </select>
   </div>
 
-  <div class="form-add">
-    <label for="status" class="form-add-label required">Tình trạng thiết bị:</label>
-    <select [(ngModel)]="newDevice.status.id" name="status" class="form-select form-select-length" required>
-
-      <option class="category-name" *ngFor="let status of statuses" [ngValue]="status.id">{{status.description}}
-      </option>
-    </select>
-  </div>
-
-  <div class="form-add">
-    <label for="statusDetail" class="form-add-label">Chi tiết tình trạng thiết bị:</label>
-    <input id="statusDetail" [(ngModel)]="newDevice.statusDetail" class="form-control"
-      name="statusDetail" />
-  </div>
 
   <div class="form-add">
     <label for="description" class="form-add-label">Mô tả:</label>
@@ -35,7 +21,8 @@
 
   <div class="form-add">
     <label for="energy" class="form-add-label">Mức năng lượng (W):</label>
-    <input id="energy" [(ngModel)]="newDevice.energy" class="form-control form-control-length" name="energy" type="number">
+    <input id="energy" [(ngModel)]="newDevice.energy" class="form-control form-control-length" name="energy"
+      type="number">
   </div>
 
 

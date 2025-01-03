@@ -19,8 +19,6 @@
           <tr>
             <th>{{device.name}}</th>
             <th>{{device.category.name}}</th>
-            <th>{{device.status.description}}</th>
-            <th>{{device.statusDetail}}</th>
             <th>{{device.description}}</th>
             <th>{{device.energy}}</th>
             <th>{{isOnOff[device.isActive.toString()]}}</th>
@@ -28,8 +26,7 @@
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-warning" (click)="goToUpdate(device.id)">Sửa</button>
                 <button type="button" class="btn btn-danger" (click)="deleteDevice(device.id)">Xóa</button>
-                <button (click)="openModal(device)"
-                  [disabled]="(device.status.description != 'Bình thường' || device.category.name == 'Cảm biến')">Bật/Tắt</button>
+                <button (click)="openModal(device)" [disabled]="device.category.name == 'Cảm biến'">Bật/Tắt</button>
 
                 <!-- Bootstrap Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"

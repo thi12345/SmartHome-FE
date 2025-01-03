@@ -13,20 +13,6 @@
     </div>
 
     <div class="form-update">
-        <label for="status" class="form-update-label required">Tình trạng thiết bị:</label>
-        <select [(ngModel)]="newDevice.status.id" name="status" class="form-add-left" required>
-            <option class="category-name" *ngFor="let status of statuses" [ngValue]="status.id">{{status.description}}
-            </option>
-        </select>
-    </div>
-
-    <div class="form-update">
-        <label for="statusDetail" class="form-update-label">Chi tiết tình trạng thiết bị:</label>
-        <input id="statusDetail" [(ngModel)]="newDevice.statusDetail" class="form-add-left input-name"
-            name="statusDetail" />
-    </div>
-
-    <div class="form-update">
         <label for="description" class="form-update-label">Mô tả:</label>
         <input id="description" [(ngModel)]="newDevice.description" class="form-add-left input-name"
             name="description" />
