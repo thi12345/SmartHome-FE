@@ -24,6 +24,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## How to run project
-Run 'npm install' to install all package need for the project
-Now you can run 'ng serve' to open server on browser
+Run 'npm install' to install all package need for the project, if you have some error when install, can try 'npm install --force'
+Now you can run 'npm start' to open server on browser
 
