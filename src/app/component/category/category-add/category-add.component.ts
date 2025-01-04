@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 export class CategoryAddComponent implements OnInit {
   newCategory: any = {
     name: '',
+    feedKey: ''
   };
 
   //  constructor(private categoryService: CategoryService) {}

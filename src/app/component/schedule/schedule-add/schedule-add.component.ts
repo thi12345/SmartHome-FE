@@ -22,10 +22,12 @@ interface Action { pos: number | boolean; name: string; }
   styleUrl: './schedule-add.component.css'
 })
 export class ScheduleAddComponent implements OnInit {
-  devices: any[] = [];
+  devices: Device[] = [];
+  // deviceName: string[] = [];
   selectedDevice: any = null;
   turnOnOff: { [key: string]: string } = { 'true': 'Bật', 'false': 'Tắt' }
   values: Action[] = [];
+  isRepeat: boolean = false;
   numbers: Action[] = [{ pos: 10, name: '10' },
   { pos: 20, name: '20' },
   { pos: 30, name: '30' },
@@ -44,10 +46,25 @@ export class ScheduleAddComponent implements OnInit {
   ]
   minTime = moment().add(30, 'seconds')
   newSchedule: any = {
-    time: this.minTime,
+    startTime: this.minTime,
+    endTime: this.minTime,
     action: true,
-    value: 0,
-    device: { id: 0, name: '' },
+    value: '',
+    isRepeat: false,
+    mon: false,
+    tue: false,
+    wed: false,
+    thu: false,
+    fri: false,
+    sat: false,
+    sun: false,
+    device: {
+      id: 0,
+      name: '',
+      description: null,
+      isActive: false,
+      category: { id: 0, name: '', feedKey: '' },
+    },
   };
 
   //  constructor(private deviceService: DeviceService) {}
@@ -55,29 +72,29 @@ export class ScheduleAddComponent implements OnInit {
     private router: Router
   ) { }
 
-  addSchedule(form: any): void {
-    if (form.valid && this.newSchedule.time) {
-      if (this.newSchedule.time < moment().add(30, 'seconds')) {
-        alert('Thời gian phải lớn hơn hiện tại 30 giây');
-        return
-      }
+  // addSchedule(form: any): void {
+  //   if (form.valid && this.newSchedule.time) {
+  //     if (this.newSchedule.time < moment().add(30, 'seconds')) {
+  //       alert('Thời gian phải lớn hơn hiện tại 30 giây');
+  //       return
+  //     }
 
-      if (this.newSchedule.value < 0) {
-        alert('Giá trị không được nhỏ hơn 0');
-        return
-      }
+  //     if (this.newSchedule.value < 0) {
+  //       alert('Giá trị không được nhỏ hơn 0');
+  //       return
+  //     }
 
-      else {
-        this.scheduleService.addSchedule(this.newSchedule).subscribe((result) => {
-          alert('Thêm lịch thành công');
-          this.router.navigate(['/schedule']);
-        });
-      }
-    }
-    else { alert('Điền vào tất cả các trường bắt buộc'); }
+  //     else {
+  //       this.scheduleService.addSchedule(this.newSchedule).subscribe((result) => {
+  //         alert('Thêm lịch thành công');
+  //         this.router.navigate(['/schedule']);
+  //       });
+  //     }
+  //   }
+  //   else { alert('Điền vào tất cả các trường bắt buộc'); }
 
 
-  }
+  // }
   ngOnInit(): void {
     this.fetchDevices();
   }
@@ -91,4 +108,66 @@ export class ScheduleAddComponent implements OnInit {
     this.newSchedule.device = this.selectedDevice;
     this.values = (this.selectedDevice.category.name === 'Quạt') ? this.numbers : this.chars;
   }
+  monChange(): void {
+    this.newSchedule.mon = true;
+  }
+  tueChange(): void {
+    this.newSchedule.tue = true;
+  }
+  wedChange(): void {
+    this.newSchedule.wed = true;
+  }
+  thuChange(): void {
+    this.newSchedule.thu = true;
+  }
+  friChange(): void {
+    this.newSchedule.fri = true;
+  }
+  satChange(): void {
+    this.newSchedule.sat = true;
+  }
+  sunChange(): void {
+    this.newSchedule.sun = true;
+  }
+  checkboxChange(): void {
+    this.isRepeat = !this.isRepeat;
+  }
+  checkrepeatFalse(): void {
+    if (this.newSchedule.isRepeat == false) {
+      this.newSchedule.mon = false;
+      this.newSchedule.tue = false;
+      this.newSchedule.wed = false;
+      this.newSchedule.thu = false;
+      this.newSchedule.fri = false;
+      this.newSchedule.sat = false;
+      this.newSchedule.sun = false;
+    }
+  }
+  addSchedule(form: any): void {
+    this.checkrepeatFalse();
+    if (form.valid && this.newSchedule.time) {
+      if (this.newSchedule.time < moment().add(30, 'seconds')) {
+        alert('Thời gian phải lớn hơn hiện tại 30 giây');
+        return
+      }
+
+      // if (this.newSchedule.value < 0) {
+      //   alert('Giá trị không được nhỏ hơn 0');
+      //   return
+      // }
+
+      else {
+        this.scheduleService.addSchedule(this.newSchedule).subscribe((result) => {
+          alert('Thêm lịch thành công');
+          this.router.navigate(['/schedule']);
+        });
+      }
+    }
+    else { alert('Điền vào tất cả các trường bắt buộc'); }
+  }
+ getAllDevices(): void {
+  this.deviceService.getDevices().subscribe((data) => {
+    this.devices = data;
+  });
+ }
 }

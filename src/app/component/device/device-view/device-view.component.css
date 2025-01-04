@@ -60,3 +60,15 @@
       padding-top: 20px;
     }
 
+.col-length-1{
+    width: 220px;
+}
+.col-length-2{
+    width: 220px;
+}
+.col-length-3{
+    width: 130px;
+}
+.col-length-4{
+    width: 80px;
+}

@@ -5,9 +5,18 @@ import { Observable } from "rxjs";
 import { Device } from "./device.service";
 export interface Schedule {
   id: number;
-  time: moment.Moment;
+  startTime: moment.Moment;
+  endTime: moment.Moment;
   action: boolean;
-  value: number;
+  value: string;
+  isRepeat: boolean;
+  mon: boolean;
+  tue: boolean;
+  wed: boolean;
+  thu: boolean;
+  fri: boolean;
+  sat: boolean;
+  sun: boolean;
   device: Device;
 }
 @Injectable({
@@ -40,4 +49,5 @@ export class ScheduleService {
   deleteSchedule(id: number): Observable<Schedule> {
     return this.http.delete<Schedule>(`${this.apiUrl}/${id}`);
   }
+
 }

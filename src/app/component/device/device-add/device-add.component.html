@@ -14,21 +14,6 @@
   </div>
 
   <div class="form-add">
-    <label for="status" class="form-add-label required">Tình trạng thiết bị:</label>
-    <select [(ngModel)]="newDevice.status.id" name="status" class="form-select form-select-length" required>
-
-      <option class="category-name" *ngFor="let status of statuses" [ngValue]="status.id">{{status.description}}
-      </option>
-    </select>
-  </div>
-
-  <div class="form-add">
-    <label for="statusDetail" class="form-add-label">Chi tiết tình trạng thiết bị:</label>
-    <input id="statusDetail" [(ngModel)]="newDevice.statusDetail" class="form-control"
-      name="statusDetail" />
-  </div>
-
-  <div class="form-add">
     <label for="description" class="form-add-label">Mô tả:</label>
     <input id="description" [(ngModel)]="newDevice.description" class="form-control" name="description" />
   </div>
@@ -38,7 +23,42 @@
     <input id="energy" [(ngModel)]="newDevice.energy" class="form-control form-control-length" name="energy" type="number">
   </div>
 
-
-
+  <div class="form-add">
+    <label for="offValue" class="form-add-label">Giá trị tắt:</label>
+    <input id="energy" class="form-control form-control-length required" name="energy"  [(ngModel)]="offValue">
+  </div>
+  <!-- <div class="form-add">
+    <label for="otherValue" class="form-add-label">Các giá trị khác:</label>
+    <input id="energy" class="form-control form-control-length required" name="energy" type="number" [(ngModel)]="onValue">
+    <button type="button" class="btn btn-primary" (click)="addValue()">Thêm</button>
+  </div> -->
+  <div class="form-add">
+    <label class="form-add-label">Các giá trị khác:</label>
+    <div class="value-container">
+      <div class="value-row" *ngFor="let value of onValue; let i = index">
+        <div class="value-input-group">
+          <input  
+                 class="form-control form-control-length" 
+                 [(ngModel)]="onValue[i]" 
+                 [name]="'additionalValue' + i">
+          
+          <button type="button" 
+                  class="btn btn-danger btn-remove btn-remove-value" 
+                  *ngIf="i > 0" 
+                  (click)="removeValue(i)">
+            <!-- <i class="fas fa-times"></i> -->
+             xóa
+          </button>
+        </div>
+      </div>
+    </div>
+ 
+  
+    <button type="button" 
+            class="btn btn-outline-primary btn-add" 
+            (click)="addValue()">
+      <i class="fas fa-plus"></i> Thêm giá trị
+    </button>
+  </div>
   <button type="submit" class="btn btn-primary form-add-sub">Thêm thiết bị</button>
 </form>

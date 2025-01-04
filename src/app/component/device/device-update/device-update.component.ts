@@ -42,9 +42,9 @@ export class DeviceUpdateComponent implements OnInit {
 
     this.deviceService.getDeviceById(this.deviceId).subscribe((device: Device) => {
       this.newDevice.name = device.name
-      this.newDevice.status = device.status
+      // this.newDevice.status = device.status
       this.newDevice.category = device.category
-      this.newDevice.statusDetail = device.statusDetail
+      
       this.newDevice.energy = device.energy
       this.newDevice.description = device.description
     });

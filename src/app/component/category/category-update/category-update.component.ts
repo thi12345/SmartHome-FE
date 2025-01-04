@@ -21,7 +21,7 @@ export class CategoryUpdateComponent implements OnInit {
   categoryId: number = 0;
   newCategory: any = {
     name: '',
-
+    feedKey: ''
   };
 
   constructor(private categoryService: CategoryService,
@@ -33,6 +33,7 @@ export class CategoryUpdateComponent implements OnInit {
 
     this.categoryService.getCategoryById(this.categoryId).subscribe((category: Category) => {
       this.newCategory.name = category.name
+      this.newCategory.feedKey = category.feedKey
     });
 
 

@@ -5,31 +5,43 @@
       <table class="table table-borderless">
         <thead>
           <tr>
-            <th scope="col">Tên</th>
-            <th scope="col">Loại</th>
-            <th scope="col">Trạng thái</th>
-            <th scope="col">Chi tiết trạng thái</th>
-            <th scope="col">Mô tả</th>
+            <th scope="col" class="col-length-3">Tên</th>
+            <th scope="col" class="col-length-4">Loại</th>
+            <!-- <th scope="col">Trạng thái</th> -->
+            <!-- <th scope="col">Chi tiết trạng thái</th> -->
+            <th scope="col" class="col-length-1">Mô tả</th>
             <th scope="col">Mức tiêu thụ (W)</th>
-            <th scope="col">Tình trạng hoạt động</th>
+            <th scope="col">Giá trị hiện tại</th>
+            <!-- <th scope="col">Giá trị khác</th> --> 
+            <th scope="col" class="col-length-2">Tình trạng hoạt động</th>
             <th scope="col">Hành động</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th>{{device.name}}</th>
-            <th>{{device.category.name}}</th>
-            <th>{{device.status.description}}</th>
-            <th>{{device.statusDetail}}</th>
-            <th>{{device.description}}</th>
+            <th class="col-length-3">{{device.name}}</th>
+            <th class="col-length-4">{{device.category.name}}</th>
+            <!-- <th>{{device.status.description}}</th> -->
+            <!-- <th>{{device.statusDetail}}</th> -->
+            <th class="col-length-1">{{device.description}}</th>
             <th>{{device.energy}}</th>
-            <th>{{isOnOff[device.isActive.toString()]}}</th>
+            <!-- <th>{{device.DeviceValue[0].value}}</th>
+            <th>{{device.DeviceValue[1].value}}</th> -->
+            <th></th>
+            <th class="col-length-2">{{device.isActive}}</th>
+
+            <!-- <div *ngIf="device.isActive == true"><button class="btn btn-secondary" (click)="">Đang hoạt động</button></div>
+            <div *ngIf="device.isActive == false"> -->
+              <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="">Đang tắt</button> -->
+              <!-- <div class="modal-dialog modal-lg">...</div> -->
+            <!-- </div> -->
+            
             <th>
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-warning" (click)="goToUpdate(device.id)">Sửa</button>
-                <button type="button" class="btn btn-danger" (click)="deleteDevice(device.id)">Xóa</button>
-                <button (click)="openModal(device)"
-                  [disabled]="(device.status.description != 'Bình thường' || device.category.name == 'Cảm biến')">Bật/Tắt</button>
+                <button class="btn btn-warning" (click)="goToUpdate(device.id)">Cập nhật</button>
+                <button class="btn btn-danger" (click)="deleteDevice(device.id)">Xóa</button>
+                <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openModal(device)">Thay đổi giá trị</button> -->
+                <button (click)="openModal(device)">Bật/Tắt</button>
 
                 <!-- Bootstrap Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -80,28 +92,30 @@
   </div>
 </div>
 
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          Chọn một giá trị:
+        </div>
+        
+        <select [(ngModel)]="deviceValueConvert" name="value" class="form-select">
+          <option *ngFor="let value of deviceValueConvert" >{{value}}</option>
+        </select>
 
-<!-- <div class="device-container">
-    <div class="device-view-title-line">
-      <label class="device-view-title view-name">Tên</label>
-      <label class="device-view-title device-view-title-left view-type">Loại </label>
-      <label class="device-view-title device-view-title-left view-status">Trạng thái</label>
-      <label class="device-view-title device-view-title-left view-statusDetail">Chi tiết trạng thái</label>
-      <label class="device-view-title device-view-title-left view-description">Mô tả</label>
-      <label class="device-view-title device-view-title-left view-energy">Mức tiêu thụ (W)</label>
-      <label class="device-view-title device-view-title-left view-isActive">Đang bật/Đang tắt</label>
+
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Đóng</button>
+        <button type="button" class="btn btn-primary">Thay đổi</button>
+      </div>
     </div>
-    <div class="device-view-data-line">
-      <h3 class="deivce-view-data view-name">{{device.name}}</h3>
-      <h3 class="deivce-view-data deivce-view-data-left view-type">{{device.category.name}}</h3>
-      <h3 class="deivce-view-data deivce-view-data-left view-status">{{device.status.description}}</h3>
-      <h3 class="deivce-view-data deivce-view-data-left view-statusDetail">{{device.statusDetail}}</h3>
-      <h3 class="deivce-view-data deivce-view-data-left view-description">{{device.description}}</h3>
-      <h3 class="deivce-view-data deivce-view-data-left view-energy">{{device.energy}}</h3>
-      <h3 class="deivce-view-data deivce-view-data-left view-isActive">{{isOnOff[device.isActive.toString()]}}</h3>
-      <button class="device-view-button" (click)="goToUpdate(device.id)">Cập nhật</button>
-      <button class="device-view-button device-view-button-left" (click)="deleteDevice(device.id)">Xóa</button>
-      <button class="device-view-button device-view-button-left-left"
-        (click)="turnOnOff(device.id)">{{OnOff[(device.isActive).toString()]}}</button>
-    </div>
-  </div> -->
+  </div>
+</div> -->

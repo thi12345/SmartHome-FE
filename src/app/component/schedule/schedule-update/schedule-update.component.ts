@@ -45,10 +45,18 @@ export class ScheduleUpdateComponent implements OnInit {
   ]
   minTime = moment().add(30, 'seconds')
   newSchedule: any = {
-    time: this.minTime,
+    startTime: this.minTime,
+    endTime: this.minTime,
     action: true,
-    value: 0,
-    device: { id: 0, name: '' },
+    value: '',
+    isRepeat: false,
+    mon: false,
+    tue: false,
+    wed: false,
+    thu: false,
+    fri: false,
+    sat: false,
+    sun: false
   };
 
   constructor(private scheduleService: ScheduleService,
@@ -58,13 +66,13 @@ export class ScheduleUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.scheduleId = Number(this.route.snapshot.paramMap.get('id'));
     this.fetchDevice()
-    this.scheduleService.getSCheduleById(this.scheduleId).subscribe((schedule: Schedule) => {
-      this.values = (schedule.device.category.name === 'Quạt') ? this.numbers : this.chars;
-      this.newSchedule.time = schedule.time
-      this.newSchedule.action = schedule.action
-      this.newSchedule.value = schedule.value
-      this.newSchedule.device = schedule.device
-    });
+    // this.scheduleService.getSCheduleById(this.scheduleId).subscribe((schedule: Schedule) => {
+    //   this.values = (schedule.device.category.name === 'Quạt') ? this.numbers : this.chars;
+    //   this.newSchedule.time = schedule.time
+    //   this.newSchedule.action = schedule.action
+    //   this.newSchedule.value = schedule.value
+    //   this.newSchedule.device = schedule.device
+    // });
 
 
   }

@@ -22,3 +22,13 @@
 .required::after {
     content: ' *'; color: red; font-weight: bold;
 }
+.form-control{
+    width: 400px;
+}
+.button{
+    margin-left: 400px;
+    margin-top: 20px;
+}
+.btn-left{
+    margin-left: 200px;
+}

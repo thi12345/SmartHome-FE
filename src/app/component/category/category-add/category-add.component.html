@@ -1,8 +1,12 @@
 <app-category-header></app-category-header>
 <form #myForm="ngForm" (ngSubmit)="addCategory(myForm)">
   <div class="form-add">
-    <label for="time" class="form-add-label" id="time">Tên loại thiết bị:</label>
+    <label for="time" class="form-add-label required" id="time">Tên loại thiết bị:</label>
     <input id="name" [(ngModel)]="newCategory.name" name="name" class="form-control form-status" required />
+  </div>
+  <div class="form-add">
+    <label for="time" class="form-add-label" id="time">Mô tả:</label>
+    <input id="name" [(ngModel)]="newCategory.feedKey" name="name" class="form-control form-status" required />
   </div>
   <button type="submit" class="btn btn-primary btn-status">Thêm loại thiết bị</button>
 </form>
