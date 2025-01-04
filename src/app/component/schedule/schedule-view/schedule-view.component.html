@@ -5,7 +5,8 @@
 <table class="table table-borderless">
   <thead>
     <tr>
-      <th scope="col">Thời gian</th>
+      <th scope="col">Thời gian bắt đầu</th>
+      <th scope="col">Thời gian kết thúc</th>
       <th scope="col">Thao tác</th>
       <th scope="col">Giá trị</th>
       <th scope="col">Thiết bị</th>
@@ -14,10 +15,16 @@
   </thead>
   <tbody>
     <tr>
-      <th ></th>
+      
+      <th >{{schedule.startTime}}</th>
+      <th >{{schedule.endTime}}</th>
       <th>{{isOnOff[(schedule.action.toString())]}}</th>
-      <th>{{schedule.value}}</th>
-      <th></th>
+      <!-- <div  > -->
+        <th *ngIf="schedule.action">{{schedule.value}}</th>
+        <th *ngIf="!schedule.action"></th>
+      <!-- </div> -->
+      
+      <th>{{schedule.device.name}}</th>
 
       <th>
         <div class="btn-group" role="group" aria-label="Basic example">

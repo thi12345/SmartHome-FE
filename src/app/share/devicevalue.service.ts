@@ -22,6 +22,6 @@ export class DeviceValueService {
       return this.http.post<DeviceValue>(`${this.apiUrl}`, deviceValue);
     }
     getAllDeviceValueByDevice(device: Device): Observable<DeviceValue[]> {
-      return this.http.post<DeviceValue[]>(`${this.apiUrl}/deviceValue`, device);
+      return this.http.post<DeviceValue[]>(`${this.apiUrl}/value`, device);
     }
 }
