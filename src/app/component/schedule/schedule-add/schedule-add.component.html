@@ -37,7 +37,7 @@
   </div> -->
   <div class="form-add">
     <label for="value" class="form-add-label">Thiết bị:</label>
-    <select class="form-select" [(ngModel)]="newSchedule.device" name="action">
+    <select class="form-select form-select-length" [(ngModel)]="newSchedule.device" name="device" (ngModelChange)="onDeviceChange()" [(ngModel)]="device_id">
       <option *ngFor="let device of devices" [ngValue]="device.id">{{device.name}}
       </option>
     </select>
@@ -45,7 +45,7 @@
   <div class="form-add">
     <label for="value" class="form-add-label">Giá trị:</label>
     <select class="form-select" [(ngModel)]="newSchedule.value" name="action">
-      <option *ngFor="let value of values" [ngValue]="value.pos">{{value.name}}
+      <option *ngFor="let value of deviceValues" >{{value.value}}
       </option>
     </select>
   </div>

@@ -21,7 +21,7 @@ export class DeviceValueService {
     addDeviceValue(deviceValue: DeviceValue): Observable<DeviceValue> {
       return this.http.post<DeviceValue>(`${this.apiUrl}`, deviceValue);
     }
-    // getAllDeviceValueByDeviceId(device: Device): Observable<DeviceValue[]> {
-    //   return this.http.post<DeviceValue[]>(this.apiUrl, device);
-    // }
+    getAllDeviceValueByDevice(device: Device): Observable<DeviceValue[]> {
+      return this.http.post<DeviceValue[]>(`${this.apiUrl}/deviceValue`, device);
+    }
 }

@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import moment, { min } from 'moment';
+import { DeviceValue, DeviceValueService } from '../../../share/devicevalue.service';
 
 
 interface Action { pos: number | boolean; name: string; }
@@ -17,12 +18,22 @@ interface Action { pos: number | boolean; name: string; }
   selector: 'app-device-add',
   standalone: true,
   imports: [ScheduleHeaderComponent, HeaderComponent, FormsModule, HttpClientModule, CommonModule],
-  providers: [DeviceService, ScheduleService],
+  providers: [DeviceService, ScheduleService, DeviceValueService],
   templateUrl: './schedule-add.component.html',
   styleUrl: './schedule-add.component.css'
 })
 export class ScheduleAddComponent implements OnInit {
   devices: Device[] = [];
+  deviceValues: DeviceValue[] = [];
+  device_id: number = 0;
+  devicePresent: Device = {
+    id: 0,
+    name: '',
+    description: null,
+    isActive: false,
+    category: { id: 0, name: '', feedKey: '' },
+    energy: 0,
+  };
   // deviceName: string[] = [];
   selectedDevice: any = null;
   turnOnOff: { [key: string]: string } = { 'true': 'Bật', 'false': 'Tắt' }
@@ -68,7 +79,7 @@ export class ScheduleAddComponent implements OnInit {
   };
 
   //  constructor(private deviceService: DeviceService) {}
-  constructor(private deviceService: DeviceService, private scheduleService: ScheduleService,
+  constructor(private deviceService: DeviceService, private scheduleService: ScheduleService, private deviceValueService: DeviceValueService,
     private router: Router
   ) { }
 
@@ -170,4 +181,27 @@ export class ScheduleAddComponent implements OnInit {
     this.devices = data;
   });
  }
+
+ onDeviceChange(): void {
+  console.log('hello again',this.device_id);
+  this.deviceService.getDeviceById(this.device_id).subscribe((data) => {
+    this.devicePresent = data;
+    
+    this.getAllValueByDevice(this.devicePresent);
+  });
+
+ }
+ getAllValueByDevice(device: Device):void {
+  console.log(this.newSchedule.device);
+  this.deviceValueService.getAllDeviceValueByDevice(this.newSchedule.device).subscribe({
+    next: (data) => {
+      this.deviceValues = data;
+    },
+    error: (err) => {
+      console.error('Lỗi khi lấy giá trị thiết bị:', err);
+      alert('Lỗi khi lấy giá trị thiết bị');
+    },
+  });
+ }
+ 
 }
