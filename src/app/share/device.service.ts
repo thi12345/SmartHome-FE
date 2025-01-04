@@ -9,18 +9,16 @@ export interface Device {
   name: string;
   description: string | null;  // Mô tả có thể null
   isActive: boolean;
-<<<<<<< HEAD
-=======
   category: Category;
->>>>>>> 5d33d72f62f7ad97bdacd2252eb5400b8e650d25
   energy: number;
-  category: Category;
+  energyConsume: number;
+  hours: number;
 
 }
 
 export interface Payload {
   device: Device,
-  value: number,
+  value: string,
   action: boolean
 }
 @Injectable({

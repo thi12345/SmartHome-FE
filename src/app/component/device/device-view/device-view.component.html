@@ -7,53 +7,26 @@
           <tr>
             <th scope="col" class="col-length-3">Tên</th>
             <th scope="col" class="col-length-4">Loại</th>
-            <!-- <th scope="col">Trạng thái</th> -->
-            <!-- <th scope="col">Chi tiết trạng thái</th> -->
             <th scope="col" class="col-length-1">Mô tả</th>
             <th scope="col">Mức tiêu thụ (W)</th>
-            <th scope="col">Giá trị hiện tại</th>
-            <!-- <th scope="col">Giá trị khác</th> --> 
             <th scope="col" class="col-length-2">Tình trạng hoạt động</th>
             <th scope="col">Hành động</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-<<<<<<< HEAD
-            <th class="col-length-3">{{device.name}}</th>
-            <th class="col-length-4">{{device.category.name}}</th>
-            <!-- <th>{{device.status.description}}</th> -->
-            <!-- <th>{{device.statusDetail}}</th> -->
-            <th class="col-length-1">{{device.description}}</th>
-=======
             <th>{{device.name}}</th>
             <th>{{device.category.name}}</th>
             <th>{{device.description}}</th>
->>>>>>> 5d33d72f62f7ad97bdacd2252eb5400b8e650d25
             <th>{{device.energy}}</th>
-            <!-- <th>{{device.DeviceValue[0].value}}</th>
-            <th>{{device.DeviceValue[1].value}}</th> -->
             <th></th>
             <th class="col-length-2">{{device.isActive}}</th>
 
-            <!-- <div *ngIf="device.isActive == true"><button class="btn btn-secondary" (click)="">Đang hoạt động</button></div>
-            <div *ngIf="device.isActive == false"> -->
-              <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="">Đang tắt</button> -->
-              <!-- <div class="modal-dialog modal-lg">...</div> -->
-            <!-- </div> -->
-            
             <th>
               <div class="btn-group" role="group" aria-label="Basic example">
-<<<<<<< HEAD
-                <button class="btn btn-warning" (click)="goToUpdate(device.id)">Cập nhật</button>
-                <button class="btn btn-danger" (click)="deleteDevice(device.id)">Xóa</button>
-                <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openModal(device)">Thay đổi giá trị</button> -->
-                <button (click)="openModal(device)">Bật/Tắt</button>
-=======
                 <button type="button" class="btn btn-warning" (click)="goToUpdate(device.id)">Sửa</button>
                 <button type="button" class="btn btn-danger" (click)="deleteDevice(device.id)">Xóa</button>
                 <button (click)="openModal(device)" [disabled]="device.category.name == 'Cảm biến'">Bật/Tắt</button>
->>>>>>> 5d33d72f62f7ad97bdacd2252eb5400b8e650d25
 
                 <!-- Bootstrap Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -66,21 +39,24 @@
                       </div>
                       <div class="modal-body">
                         <form>
-                          <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Giá trị:</label>
-                            <select [(ngModel)]="payload.value" name="action">
-                              <option *ngFor="let value of values" [ngValue]="value.pos">{{value.name}}
-                              </option>
-                            </select>
-                          </div>
+
                           <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Bật/Tắt:</label>
-                            <select [(ngModel)]="payload.action" name="action">
+                            <select [(ngModel)]="payload.action" name="action"
+                              (ngModelChange)="takeAction(payload.action)">
                               <option *ngFor="let action of actions" [ngValue]="action.value">{{action.name}}
                               </option>
                             </select>
-
                           </div>
+
+                          <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Giá trị:</label>
+                            <select [(ngModel)]="payload.value" name="action" [disabled]="disabledInput">
+                              <option *ngFor="let value of deviceValueOnList" [ngValue]="value.value">{{value.value}}
+                              </option>
+                            </select>
+                          </div>
+
                         </form>
                       </div>
                       <div class="modal-footer">

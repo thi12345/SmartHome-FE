@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CategoryService, Category } from '../../../share/category.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { DeviceValueService } from '../../../share/devicevalue.service';
+import { DeviceValue, DeviceValueService } from '../../../share/devicevalue.service';
 
 declare var window: any;
 
@@ -22,14 +22,16 @@ interface Action { pos: number | boolean; name: string; }
   styleUrl: './device-view.component.css'
 })
 export class DeviceViewComponent implements OnInit {
-  selectDevice: Device | null = null;
-  deviceValueConvert: string[] = [];
-  
-  devices: Device[] = [];
-  categories: Category[] = [];
-  
 
-  deviceValueOn: any={
+  disabledInput = false;
+
+  selectDevice: Device | null = null;
+
+  devices: Device[] = [];
+
+
+  deviceValueOff: DeviceValue = {
+    id: 0,
     value: '',
     onOff: false,
     device: {
@@ -39,29 +41,20 @@ export class DeviceViewComponent implements OnInit {
       isActive: false,
       category: { id: 0, name: '', feedKey: '' },
       energy: 0,
+      energyConsume: 0,
+      hours: 0
     },
   };
+
+
+  deviceValueOnList: DeviceValue[] = [];
+
   actions = [{ value: true, name: 'Bật' }, { value: false, name: 'Tắt' }]
-  values: Action[] = [];
-  numbers: Action[] = [{ pos: 10, name: '10' },
-  { pos: 20, name: '20' },
-  { pos: 30, name: '30' },
-  { pos: 40, name: '40' },
-  { pos: 50, name: '50' },
-  { pos: 60, name: '60' },
-  { pos: 70, name: '70' },
-  { pos: 80, name: '80' },
-  { pos: 90, name: '90' },
-  { pos: 100, name: '100' }];
-  chars: Action[] = [{ pos: 0, name: 'Tất cả' },
-  { pos: 1, name: 'Phòng 1' },
-  { pos: 2, name: 'Phòng 2' },
-  { pos: 3, name: 'Phòng 3' },
-  { pos: 4, name: 'Phòng 4' }
-  ]
+
+
   payload: any = {
     device: { id: 0, name: '' },
-    value: 0,
+    value: '',
     action: true
   };
 
@@ -70,11 +63,11 @@ export class DeviceViewComponent implements OnInit {
 
   isLoading: boolean = false;  // Biến để xử lý trạng thái loading
   errorMessage: string = '';  // Biến để lưu thông báo lỗi
-  constructor(private deviceService: DeviceService, private categoryService: CategoryService, deviceValueService: DeviceValueService, private router: Router) { }
+
+  constructor(private deviceService: DeviceService,
+    private deviceValueService: DeviceValueService, private router: Router) { }
   ngOnInit(): void {
     this.fetchDevices();
-
-    this.fetchCategories();
 
   }
 
@@ -94,16 +87,17 @@ export class DeviceViewComponent implements OnInit {
       this.devices = data;
     });
   }
-  fetchCategories(): void {
-    this.categoryService.getCategories().subscribe((data: any) => {
-      this.categories = data;
-    });
-  }
+
 
 
   openModal(device: Device): void {
     this.payload.device = device
-    this.values = (device.category.name === 'Quạt') ? this.numbers : this.chars;
+    this.deviceValueService.getDeviceValueOff(device).subscribe((data: DeviceValue) => {
+      this.deviceValueOff = data;
+    });
+    this.deviceValueService.getDeviceValueOn(device).subscribe((data: DeviceValue[]) => {
+      this.deviceValueOnList = data;
+    });
     const myModal = new window.bootstrap.Modal(document.getElementById('myModal')); myModal.show();
   }
 
@@ -111,18 +105,11 @@ export class DeviceViewComponent implements OnInit {
     this.deviceService.switchDevice(this.payload).subscribe();
     const myModal = window.bootstrap.Modal.getInstance(document.getElementById('myModal')); myModal.hide();
   }
-  getbyId(id: number): void {
-    this.deviceService.getDeviceById(id).subscribe((data: any) => {
-      this.deviceValueOn = data.deviceValues.map((value: any) => {
-        console.log(data);
-      });
-    });
-  }
-  convertValue(id:number): void{
-    this.deviceValueConvert = this.deviceValueOn.value.split(',');
-    console.log(this.deviceValueConvert);
-  }
-  setAction(action: boolean): void {
-    this.payload.action = action;
+
+
+  takeAction(action: boolean): void {
+    if (!action) {
+      this.disabledInput = true;
+    }
   }
 }
