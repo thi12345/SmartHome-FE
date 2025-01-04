@@ -14,7 +14,8 @@ import { off } from 'node:process';
   selector: 'app-device-add',
   standalone: true,
   imports: [DeviceHeaderComponent, FormsModule, HttpClientModule, CommonModule],
-  providers: [DeviceService, CategoryService],
+  providers: [DeviceService, CategoryService, DeviceValueService],
+
   templateUrl: './device-add.component.html',
   styleUrl: './device-add.component.css'
 })
@@ -72,7 +73,9 @@ export class DeviceAddComponent implements OnInit {
   //  constructor(private deviceService: DeviceService) {}
   constructor(private deviceService: DeviceService,
     private categoryService: CategoryService,
+
     private deviceValueService: DeviceValueService,
+
     private router: Router
   ) { }
 

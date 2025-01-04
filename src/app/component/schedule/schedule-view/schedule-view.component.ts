@@ -29,7 +29,7 @@ export class SCheduleViewComponent implements OnInit {
     this.router.navigate(['/schedule-update', id]);
   }
   deleteSchedule(id: number): void {
-    if (confirm('Are you sure you want to delete this device?')) {
+    if (confirm('Bạn chắc chắn muốn xóa?')) {
       this.scheduleService.deleteSchedule(id).subscribe(() => {
         alert('Lịch hoạt động đã xóa thành công');
         this.fetchSchedule(); // Cập nhật danh sách sau khi xóa
