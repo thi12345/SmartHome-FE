@@ -6,7 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryService } from '../../../share/category.service';
+<<<<<<< HEAD
 import { forkJoin } from 'rxjs';
+=======
+>>>>>>> 5d33d72f62f7ad97bdacd2252eb5400b8e650d25
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { DeviceValue,DeviceValueService } from '../../../share/devicevalue.service';
@@ -15,7 +18,11 @@ import { off } from 'node:process';
   selector: 'app-device-add',
   standalone: true,
   imports: [DeviceHeaderComponent, FormsModule, HttpClientModule, CommonModule],
+<<<<<<< HEAD
   providers: [DeviceService, CategoryService, DeviceValueService],
+=======
+  providers: [DeviceService, CategoryService],
+>>>>>>> 5d33d72f62f7ad97bdacd2252eb5400b8e650d25
   templateUrl: './device-add.component.html',
   styleUrl: './device-add.component.css'
 })
@@ -68,8 +75,11 @@ export class DeviceAddComponent implements OnInit {
   //  constructor(private deviceService: DeviceService) {}
   constructor(private deviceService: DeviceService,
     private categoryService: CategoryService,
+<<<<<<< HEAD
 
     private deviceValueService: DeviceValueService,
+=======
+>>>>>>> 5d33d72f62f7ad97bdacd2252eb5400b8e650d25
     private router: Router
   ) { }
 
@@ -129,7 +139,10 @@ export class DeviceAddComponent implements OnInit {
   }
   ngOnInit(): void {
     this.fetchCategories();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5d33d72f62f7ad97bdacd2252eb5400b8e650d25
   }
   fetchCategories(): void {
     this.categoryService.getCategories().subscribe((data) => {
@@ -137,6 +150,7 @@ export class DeviceAddComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
 
   addValue(): void {
     this.onValue.push(this.otherValue);
@@ -147,6 +161,8 @@ export class DeviceAddComponent implements OnInit {
   convertOnValueToString(): void {
     this.onValueConvert = this.onValue.join(',');
   }
+=======
+>>>>>>> 5d33d72f62f7ad97bdacd2252eb5400b8e650d25
 
   // addDeviceValue(form: any): void {
   //   if (form.valid) {

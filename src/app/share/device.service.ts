@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import { Observable } from "rxjs";
-import { Status } from "./status.service";
 import { Category } from "./category.service";
 import { DeviceValue } from "./devicevalue.service";
 export interface Device {
@@ -10,6 +9,10 @@ export interface Device {
   name: string;
   description: string | null;  // Mô tả có thể null
   isActive: boolean;
+<<<<<<< HEAD
+=======
+  category: Category;
+>>>>>>> 5d33d72f62f7ad97bdacd2252eb5400b8e650d25
   energy: number;
   category: Category;
 

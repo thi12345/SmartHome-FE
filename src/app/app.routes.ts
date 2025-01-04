@@ -21,9 +21,6 @@ import { CategoryUpdateComponent } from './component/category/category-update/ca
 import { ScheduleAddComponent } from './component/schedule/schedule-add/schedule-add.component';
 import { ScheduleUpdateComponent } from './component/schedule/schedule-update/schedule-update.component';
 import { SCheduleViewComponent } from './component/schedule/schedule-view/schedule-view.component';
-import { StatusViewComponent } from './component/status/status-view/status-view.component';
-import { StatusAddComponent } from './component/status/status-add/status-add.component';
-import { StatusUpdateComponent } from './component/status/status-update/status-update.component';
 
 
 
@@ -51,9 +48,5 @@ export const routes: Routes = [
     { path: 'category-add', component: CategoryAddComponent },
     { path: 'category-update/:id', component: CategoryUpdateComponent },
 
-
-    { path: 'status', component: StatusViewComponent },
-    { path: 'status-add', component: StatusAddComponent },
-    { path: 'status-update/:id', component: StatusUpdateComponent },
 
 ];
