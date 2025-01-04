@@ -36,19 +36,33 @@ export class DeviceAddComponent implements OnInit {
     isActive: false,
     category: { id: 0, name: '', feedKey: '' },
     energy: 0,
-    deviceValues: [],
+    
   };
   newDeviceValueOn: DeviceValue = {
     id: 0,
     value: '',
     onOff: false,
-    device_id: 0,
+    device: {
+      id : 0,
+      name: '',
+      description: null,
+      isActive: false,
+      category: { id: 0, name: '', feedKey: '' },
+      energy: 0,
+    },
   };
   newDeviceValueOff: DeviceValue = {
     id: 0,
     value: '',
     onOff: false,
-    device_id: 0, 
+    device: {
+      id : 0,
+      name: '',
+      description: null,
+      isActive: false,
+      category: { id: 0, name: '', feedKey: '' },
+      energy: 0,
+    } ,
   };
 
   //  constructor(private deviceService: DeviceService) {}
