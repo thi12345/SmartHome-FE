@@ -31,7 +31,7 @@ export class ScheduleService {
     return this.http.get<Schedule[]>(`${this.apiUrl}`);
   }
 
-  getSCheduleById(id: number): Observable<Schedule> {
+  getScheduleById(id: number): Observable<Schedule> {
     return this.http.get<Schedule>(`${this.apiUrl}/${id}`);
   }
 
