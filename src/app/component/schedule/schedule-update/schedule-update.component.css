@@ -5,10 +5,13 @@
 }
 
 .form-update-label{
-    width: 200px;
+    width: 300px;
     font-size: 24px;
   
 }
+.form-control-datetime{
+    width: 300px;
+  }
 .update-button{
     margin-top: 40px;
     margin-left: 400px;
@@ -21,4 +24,18 @@
 
 .required::after {
     content: ' *'; color: red; font-weight: bold;
+}
+.form-select
+{
+  width: 100px;
+}
+.form-select-device{
+  width: 200px;
+}
+.button{
+    margin-top: 20px;
+    margin-left: 500px;
+}
+.btn-left{
+    margin-left: 200px;
 }

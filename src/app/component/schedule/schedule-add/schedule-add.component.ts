@@ -17,7 +17,7 @@ interface Action { pos: number | boolean; name: string; }
 @Component({
   selector: 'app-device-add',
   standalone: true,
-  imports: [ScheduleHeaderComponent, HeaderComponent, FormsModule, HttpClientModule, CommonModule],
+  imports: [ScheduleHeaderComponent, HeaderComponent, FormsModule, HttpClientModule, CommonModule, ],
   providers: [DeviceService, ScheduleService, DeviceValueService],
   templateUrl: './schedule-add.component.html',
   styleUrl: './schedule-add.component.css'

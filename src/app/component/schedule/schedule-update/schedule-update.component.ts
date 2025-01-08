@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import moment from 'moment';
 import { DeviceService, Device } from '../../../share/device.service';
+import { DeviceValueService, DeviceValue } from '../../../share/devicevalue.service';
 
 interface Action { pos: number | boolean; name: string; }
 
@@ -17,13 +18,22 @@ interface Action { pos: number | boolean; name: string; }
   selector: 'app-device-update',
   standalone: true,
   imports: [ScheduleHeaderComponent, HeaderComponent, HttpClientModule, CommonModule, FormsModule],
-  providers: [ScheduleService, DeviceService],
+  providers: [ScheduleService, DeviceService, DeviceValueService],
   templateUrl: './schedule-update.component.html',
   styleUrl: './schedule-update.component.css'
 })
 export class ScheduleUpdateComponent implements OnInit {
   scheduleId: number = 0;
   devices: Device[] = [];
+  devicePresent: Device = {
+    id: 0,
+    name: '',
+    description: null,
+    isActive: false,
+    category: { id: 0, name: '', feedKey: '' },
+    energy: 0,
+  };
+  deviceValues: DeviceValue[] = [];
   selectedDevice: any = null;
   turnOnOff: { [key: string]: string } = { 'true': 'Bật', 'false': 'Tắt' }
   values: Action[] = [];
@@ -61,11 +71,13 @@ export class ScheduleUpdateComponent implements OnInit {
 
   constructor(private scheduleService: ScheduleService,
     private deviceService: DeviceService,
-    private route: ActivatedRoute, private router: Router
+    private route: ActivatedRoute, 
+    private deviceValueService: DeviceValueService,
+    private router: Router
   ) { }
   ngOnInit(): void {
     this.scheduleId = Number(this.route.snapshot.paramMap.get('id'));
-    this.fetchDevice()
+    this.fetchDevice();
     // this.scheduleService.getSCheduleById(this.scheduleId).subscribe((schedule: Schedule) => {
     //   this.values = (schedule.device.category.name === 'Quạt') ? this.numbers : this.chars;
     //   this.newSchedule.time = schedule.time
@@ -73,8 +85,33 @@ export class ScheduleUpdateComponent implements OnInit {
     //   this.newSchedule.value = schedule.value
     //   this.newSchedule.device = schedule.device
     // });
+    this.scheduleService.getScheduleById(this.scheduleId).subscribe((schedule: Schedule) => {
+      this.newSchedule.startTime = moment(schedule.startTime);
+      this.newSchedule.endTime = moment(schedule.endTime);
+      this.newSchedule.action = schedule.action;
+      this.newSchedule.value = schedule.value;
+      this.newSchedule.isRepeat = schedule.isRepeat;
+      this.newSchedule.mon = schedule.mon;
+      this.newSchedule.tue = schedule.tue;
+      this.newSchedule.wed = schedule.wed;
+      this.newSchedule.thu = schedule.thu;
+      this.newSchedule.fri = schedule.fri;
+      this.newSchedule.sat = schedule.sat;
+      this.newSchedule.sun = schedule.sun;
+      this.newSchedule.device = schedule.device;
+      this.devicePresent = schedule.device;
+      this.deviceValueService.getAllDeviceValueByDevice(this.devicePresent).subscribe({
+        next: (data) => {
+          this.deviceValues = data;
+        },
+        error: (err) => {
+          console.error('Lỗi khi lấy giá trị thiết bị:', err);
+          alert('Lỗi khi lấy giá trị thiết bị');
+        },
+    });
 
-
+    });
+    console.log('test',this.newSchedule);
   }
   onSubmit(form: any): void {
     if (form.valid && this.newSchedule.time) {
@@ -109,8 +146,18 @@ export class ScheduleUpdateComponent implements OnInit {
   }
 
   onSelectChange(): void {
-    this.newSchedule.device = this.selectedDevice;
-    this.values = (this.selectedDevice.category.name === 'Quạt') ? this.numbers : this.chars;
+    // this.newSchedule.device = this.selectedDevice;
+    // this.values = (this.selectedDevice.category.name === 'Quạt') ? this.numbers : this.chars;
+
+    this.deviceValueService.getAllDeviceValueByDevice(this.devicePresent).subscribe({
+      next: (data) => {
+        this.deviceValues = data;
+      },
+      error: (err) => {
+        console.error('Lỗi khi lấy giá trị thiết bị:', err);
+        alert('Lỗi khi lấy giá trị thiết bị');
+      },
+    });
   }
 
 }

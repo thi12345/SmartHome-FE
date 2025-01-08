@@ -1,15 +1,22 @@
 <app-schedule-header></app-schedule-header>
 <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
     <div class="form-update">
-        <label for="time" class="form-update-label required" id="time">Thời gian:</label>
-        <input id="time" [(ngModel)]="newSchedule.time" name="time" class="form-add-left input-name" required
-            type="datetime-local" />
-    </div>
+        <label for="startTime" class="form-update-label " id="startTimeLabel">Thời gian bắt đầu:</label>
+        <input id="startTime" [(ngModel)]="newSchedule.startTime" name="startTime" class="form-control form-control-datetime" required
+          type="time" />
+       
+      </div>
+      <div class="form-update">
+        <label for="endTime" class="form-update-label " id="endTimeLabel">Thời gian kết thúc:</label>
+        <input id="endTime" [(ngModel)]="newSchedule.endTime" name="endTime" class="form-control form-control-datetime" required
+          type="time" />
+       
+      </div>
 
 
     <div class="form-update">
         <label for="device" class="form-update-label required">Thiết bị:</label>
-        <select [(ngModel)]="selectedDevice" name="device" class="form-add-left" required
+        <select [(ngModel)]="newSchedule.device.name" name="device" class="form-select form-select-device" required
             (ngModelChange)="onSelectChange()">
             <option *ngFor="let device of devices" [ngValue]="device">{{device.name}}
             </option>
@@ -18,7 +25,7 @@
 
     <div class="form-update">
         <label for="action" class="form-update-label required">Thao tác:</label>
-        <select [(ngModel)]="newSchedule.action" name="action" class="form-add-left" required>
+        <select [(ngModel)]="newSchedule.action" name="action" class="form-select " required>
             <option *ngFor="let act of [true,false]" [ngValue]="act">{{turnOnOff[act.toString()]}}
             </option>
         </select>
@@ -26,16 +33,17 @@
 
     <div class="form-update">
         <label for="value" class="form-update-label">Giá trị:</label>
-        <select [(ngModel)]="newSchedule.value" name="action">
-            <option *ngFor="let value of values" [ngValue]="value.pos">{{value.name}}
+        <select [(ngModel)]="newSchedule.value" name="action" class="form-select">
+            <option *ngFor="let value of deviceValues" [ngValue]="value">{{value.value}}
             </option>
         </select>
     </div>
 
 
 
-    <div class="button"><button class="update-button" type="submit">Cập nhật</button>
-        <button class="update-button" type="button" (click)="onCancel()">Hủy bỏ</button>
+    <div class="button">
+        <button class="btn btn-primary " type="submit">Cập nhật</button>
+        <button class="btn btn-secondary btn-left" type="button" (click)="onCancel()">Hủy bỏ</button>
     </div>
 
 </form>
