@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ScheduleHeaderComponent } from '../schedule-header/schedule-header.component';
 import { HeaderComponent } from "../../header/header.component";
 import { Device, DeviceService } from '../../../share/device.service';
-import { ScheduleService } from '../../../share/schedule.service';
+import { Schedule, ScheduleService } from '../../../share/schedule.service';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -44,24 +44,15 @@ export class ScheduleAddComponent implements OnInit {
   turnOnOff: { [key: string]: string } = { 'true': 'Bật', 'false': 'Tắt' }
   values: Action[] = [];
   isRepeat: boolean = false;
-  numbers: Action[] = [{ pos: 10, name: '10' },
-  { pos: 20, name: '20' },
-  { pos: 30, name: '30' },
-  { pos: 40, name: '40' },
-  { pos: 50, name: '50' },
-  { pos: 60, name: '60' },
-  { pos: 70, name: '70' },
-  { pos: 80, name: '80' },
-  { pos: 90, name: '90' },
-  { pos: 100, name: '100' }];
-  chars: Action[] = [{ pos: 0, name: 'Tất cả' },
-  { pos: 1, name: 'Phòng 1' },
-  { pos: 2, name: 'Phòng 2' },
-  { pos: 3, name: 'Phòng 3' },
-  { pos: 4, name: 'Phòng 4' }
-  ]
+  mon: boolean = false;
+  tue: boolean = false;
+  wed: boolean = false;
+  thu: boolean = false;
+  fri: boolean = false;
+  sat: boolean = false;
+  sun: boolean = false;
   minTime = moment().add(30, 'seconds')
-  newSchedule: any = {
+  newSchedule: Schedule = {
     startTime: this.minTime,
     endTime: this.minTime,
     action: true,
@@ -80,7 +71,11 @@ export class ScheduleAddComponent implements OnInit {
       description: null,
       isActive: false,
       category: { id: 0, name: '', feedKey: '' },
+      energy: 0,
+      energyConsume: 0,
+      hours: 0
     },
+    id: 0
   };
 
   //  constructor(private deviceService: DeviceService) {}
@@ -125,28 +120,27 @@ export class ScheduleAddComponent implements OnInit {
 
   onSelectChange(): void {
     this.newSchedule.device = this.selectedDevice;
-    this.values = (this.selectedDevice.category.name === 'Quạt') ? this.numbers : this.chars;
   }
   monChange(): void {
-    this.newSchedule.mon = true;
+    this.mon = !this.mon;
   }
   tueChange(): void {
-    this.newSchedule.tue = true;
+    this.tue = !this.tue;
   }
   wedChange(): void {
-    this.newSchedule.wed = true;
+    this.wed = !this.wed;
   }
   thuChange(): void {
-    this.newSchedule.thu = true;
+    this.thu = !this.thu;
   }
   friChange(): void {
-    this.newSchedule.fri = true;
+    this.fri = !this.fri;
   }
   satChange(): void {
-    this.newSchedule.sat = true;
+    this.sat = !this.sat;
   }
   sunChange(): void {
-    this.newSchedule.sun = true;
+    this.sun = !this.sun;
   }
   checkboxChange(): void {
     this.isRepeat = !this.isRepeat;
@@ -164,6 +158,13 @@ export class ScheduleAddComponent implements OnInit {
   }
   addSchedule(form: any): void {
     this.checkrepeatFalse();
+    this.newSchedule.mon = this.mon
+    this.newSchedule.tue = this.tue
+    this.newSchedule.wed = this.wed
+    this.newSchedule.thu = this.thu
+    this.newSchedule.fri = this.fri
+    this.newSchedule.sat = this.sat
+    this.newSchedule.sun = this.sun
     this.newSchedule.action = this.action;
     this.newSchedule.device = this.devicePresent;
     this.newSchedule.isRepeat = this.isRepeat;

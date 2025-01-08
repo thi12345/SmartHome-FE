@@ -1,0 +1,40 @@
+<app-scene-header></app-scene-header>
+<div class="container">
+  <div *ngFor="let scene of scenes" class="row">
+    <div class="card">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Thiết bị 1</th>
+            <th scope="col">Giá trị 1</th>
+            <th scope="col">Thiết bị 2</th>
+            <th scope="col">Thao tác 2</th>
+            <th scope="col">Giá trị 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+
+            <th>{{scene.device0.name}}</th>
+            <th>{{scene.value0}}</th>
+            <th>{{scene.device1.name}}</th>
+            <th>{{isOnOff[(scene.action1.toString())]}}</th>
+            <th>{{scene.value1}}</th>
+
+
+
+            <th>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-danger" (click)="deleteScene(scene.id)">Xóa</button>
+
+              </div>
+            </th>
+          </tr>
+
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

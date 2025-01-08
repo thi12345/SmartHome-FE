@@ -1,0 +1,13 @@
+
+    .card{
+      padding: 0;
+      width: 800px;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+        .card-flex{
+          display: flex;
+          justify-content: space-between;
+        }

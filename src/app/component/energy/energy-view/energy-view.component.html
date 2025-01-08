@@ -1,0 +1,19 @@
+<app-energy-header></app-energy-header>
+<div class="container mt-3">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Tên thiết bị</th>
+        <th scope="col">Thời gian sử dụng</th>
+        <th scope="col">Năng lượng tiêu hao</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let energy of energyList">
+        <td>{{ energy.device.name }}</td>
+        <td>{{ energy.hours}}</td>
+        <td>{{ energy.energy }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

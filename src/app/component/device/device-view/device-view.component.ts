@@ -52,8 +52,20 @@ export class DeviceViewComponent implements OnInit {
   actions = [{ value: true, name: 'Bật' }, { value: false, name: 'Tắt' }]
 
 
-  payload: any = {
-    device: { id: 0, name: '' },
+  payload: Payload = {
+    device: {
+      id: 0, name: '',
+      description: null,
+      isActive: false,
+      category: {
+        id: 0,
+        name: '',
+        feedKey: ''
+      },
+      energy: 0,
+      energyConsume: 0,
+      hours: 0
+    },
     value: '',
     action: true
   };
@@ -102,6 +114,11 @@ export class DeviceViewComponent implements OnInit {
   }
 
   submitForm(): void {
+    if (this.payload.action == false) {
+
+      this.payload.value = this.deviceValueOff.value;
+
+    }
     this.deviceService.switchDevice(this.payload).subscribe();
     const myModal = window.bootstrap.Modal.getInstance(document.getElementById('myModal')); myModal.hide();
   }

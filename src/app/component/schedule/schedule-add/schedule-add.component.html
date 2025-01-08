@@ -1,16 +1,16 @@
 <app-schedule-header></app-schedule-header>
 <form #myForm="ngForm" (ngSubmit)="addSchedule(myForm)">
   <div class="form-add">
-    <label for="time" class="form-add-label required" id="time">Thời gian bắt đầu:</label>
-    <input id="time" [(ngModel)]="newSchedule.startTime" name="time" class="form-control form-control-datetime" required
-      type="time" />
-   
+    <label for="startTime" class="form-update-label " id="startTimeLabel">Thời gian bắt đầu:</label>
+    <input id="startTime" [(ngModel)]="newSchedule.startTime" name="startTime"
+      class="form-control form-control-datetime" required type="time" />
+
   </div>
   <div class="form-add">
-    <label for="time" class="form-add-label required" id="time">Thời gian kết thúc:</label>
-    <input id="time" [(ngModel)]="newSchedule.endTime" name="time" class="form-control form-control-datetime" required
-      type="time" />
-   
+    <label for="endTime" class="form-update-label " id="endTimeLabel">Thời gian kết thúc:</label>
+    <input id="endTime" [(ngModel)]="newSchedule.endTime" name="endTime" class="form-control form-control-datetime"
+      required type="time" />
+
   </div>
 
   <!-- <div class="form-add">
@@ -24,15 +24,16 @@
 
   <div class="form-add">
     <label for="action" class="form-add-label required">Thao tác:</label>
-    <select [(ngModel)]="action" name="action" class="form-select" required >
+    <select [(ngModel)]="action" name="action" class="form-select" required>
       <option class="device-name" *ngFor="let act of [true,false]" [ngValue]="act">{{turnOnOff[act.toString()]}}
       </option>
     </select>
   </div>
- 
+
   <div class="form-add">
     <label for="value" class="form-add-label required">Thiết bị:</label>
-    <select class="form-select form-select-length" name="device" [(ngModel)]="devicePresent" (ngModelChange)="onDeviceChange()" required>
+    <select class="form-select form-select-device" name="device" [(ngModel)]="devicePresent"
+      (ngModelChange)="onDeviceChange()" required>
       <option *ngFor="let device of devices" [ngValue]="device">{{device.name}}
       </option>
     </select>
@@ -40,7 +41,7 @@
   <div class="form-add">
     <label for="value" class="form-add-label required">Giá trị:</label>
     <select class="form-select" [(ngModel)]="newSchedule.value" name="action" required>
-      <option *ngFor="let value of deviceValues" >{{value.value}}
+      <option *ngFor="let value of deviceValues">{{value.value}}
       </option>
     </select>
   </div>
@@ -50,38 +51,44 @@
       Lặp lại
     </label>
   </div>
-  <div class="row g-2 checkbox-repeat">
+  <div class="form-check checkbox-repeat">
     <div class="col-1">
-      <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" (click)="monChange()" [disabled]="!isRepeat">
-      <label class="btn btn-outline-primary w-100" for="btncheck1">Thứ 2</label>
+      <input type="checkbox" class="form-check-input" id="btncheck1" (click)="monChange()" [disabled]="!isRepeat">
+      <label class="form-check-label" for="btncheck1">Thứ 2</label>
     </div>
     <div class="col-1">
-      <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" (click)="tueChange()" [disabled]="!isRepeat">
-      <label class="btn btn-outline-primary w-100" for="btncheck2">Thứ 3</label>
+      <input type="checkbox" class="form-check-input" id="btncheck2" autocomplete="off" (click)="tueChange()"
+        [disabled]="!isRepeat">
+      <label class="form-check-label" for="btncheck2">Thứ 3</label>
     </div>
     <div class="col-1">
-      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" (click)="wedChange()" [disabled]="!isRepeat">
-      <label class="btn btn-outline-primary w-100" for="btncheck3">Thứ 4</label>
+      <input type="checkbox" class="form-check-input" id="btncheck3" autocomplete="off" (click)="wedChange()"
+        [disabled]="!isRepeat">
+      <label class="form-check-label" for="btncheck3">Thứ 4</label>
     </div>
     <div class="col-1">
-      <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" (click)="thuChange()" [disabled]="!isRepeat">
-      <label class="btn btn-outline-primary w-100" for="btncheck4">Thứ 5</label>
+      <input type="checkbox" class="form-check-input" id="btncheck4" autocomplete="off" (click)="thuChange()"
+        [disabled]="!isRepeat">
+      <label class="form-check-label" for="btncheck4">Thứ 5</label>
     </div>
     <div class="col-1">
-      <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" (click)="friChange()" [disabled]="!isRepeat">
-      <label class="btn btn-outline-primary w-100" for="btncheck5">Thứ 6</label>
+      <input type="checkbox" class="form-check-input" id="btncheck5" autocomplete="off" (click)="friChange()"
+        [disabled]="!isRepeat">
+      <label class="form-check-label" for="btncheck5">Thứ 6</label>
     </div>
     <div class="col-1">
-      <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" (click)="satChange()" [disabled]="!isRepeat">
-      <label class="btn btn-outline-primary w-100" for="btncheck6">Thứ 7</label>
+      <input type="checkbox" class="form-check-input" id="btncheck6" autocomplete="off" (click)="satChange()"
+        [disabled]="!isRepeat">
+      <label class="form-check-label" for="btncheck6">Thứ 7</label>
     </div>
     <div class="col-1">
-      <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off" (click)="sunChange()" [disabled]="!isRepeat">
-      <label class="btn btn-outline-primary w-100" for="btncheck7">Chủ nhật</label>
+      <input type="checkbox" class="form-check-input" id="btncheck7" autocomplete="off" (click)="sunChange()"
+        [disabled]="!isRepeat">
+      <label class="form-check-label" for="btncheck7">Chủ nhật</label>
     </div>
   </div>
 
 
 
-  <button type="submit" class="btn btn-primary form-add-sub" [(ngModel)]="addSchedule">Thêm lịch hoạt động</button>
+  <button type="submit" class="btn btn-primary form-add-sub">Thêm lịch hoạt động</button>
 </form>

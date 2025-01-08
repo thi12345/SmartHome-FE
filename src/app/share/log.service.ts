@@ -6,11 +6,14 @@ import { Observable } from 'rxjs';
 })
 export class LogService {
     private baseUrl = 'http://localhost:8080/api/log';
-    constructor(private http: HttpClient) {}
-    getLogs(): Observable<any[]>{
+    constructor(private http: HttpClient) { }
+    getLogs(): Observable<any[]> {
         return this.http.get<any[]>(this.baseUrl);
     }
     deleteLog(id: number): Observable<void> {
         return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    }
+    getEnergyConsume(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.baseUrl}/energyConsume`);
     }
 }

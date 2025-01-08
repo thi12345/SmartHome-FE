@@ -21,6 +21,10 @@ import { CategoryUpdateComponent } from './component/category/category-update/ca
 import { ScheduleAddComponent } from './component/schedule/schedule-add/schedule-add.component';
 import { ScheduleUpdateComponent } from './component/schedule/schedule-update/schedule-update.component';
 import { SCheduleViewComponent } from './component/schedule/schedule-view/schedule-view.component';
+import { SceneViewComponent } from './component/scene/scene-view/scene-view.component';
+import { SceneAddComponent } from './component/scene/scene-add/scene-add.component';
+import { EnergyHeaderComponenet } from './component/energy/energy-header/energy-header.component';
+import { EnergyViewComponent } from './component/energy/energy-view/energy-view.component';
 
 
 
@@ -47,6 +51,11 @@ export const routes: Routes = [
     { path: 'category', component: CategoryViewComponent },
     { path: 'category-add', component: CategoryAddComponent },
     { path: 'category-update/:id', component: CategoryUpdateComponent },
+
+    { path: 'scene', component: SceneViewComponent },
+    { path: 'scene-add', component: SceneAddComponent },
+
+    { path: 'energy', component: EnergyViewComponent },
 
 
 ];

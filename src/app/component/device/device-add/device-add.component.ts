@@ -24,6 +24,7 @@ export class DeviceAddComponent implements OnInit {
   statuses: any[] = [];
   offValue: string = '';
   onValue: string[] = [];
+  onValueString: string = '';
   otherValue: number = 0;
   // onDeviceValue: string = '';
   // offDeviceValue: string = '';
@@ -107,6 +108,8 @@ export class DeviceAddComponent implements OnInit {
           });
           // Gọi API addDeviceValue cho On Value
 
+          this.onValue = this.onValueString.split(',');
+
           for (var value of this.onValue) {
             this.newDeviceValueOn.device = deviceResult;
             this.newDeviceValueOn.onOff = true;
@@ -146,5 +149,7 @@ export class DeviceAddComponent implements OnInit {
       this.categories = data;
     });
   }
+
+
 
 }

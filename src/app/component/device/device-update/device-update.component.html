@@ -24,6 +24,16 @@
     </div>
 
 
+    <div class="form-update">
+        <label for="energy" class="form-update-label">Giá trị tắt (nhập 1 giá trị):</label>
+        <input id="energy" class="form-control form-control-length" name="valueOff" [(ngModel)]="offValue">
+    </div>
+
+    <div class="form-update">
+        <label class="form-update-label">Các giá trị bật (cách nhau bởi dấu phẩy):</label>
+        <input id="energy" class="form-control form-control-length" name="valueOn" [(ngModel)]="onValueString">
+    </div>
+
     <div class="button">
         <button class="btn btn-primary" type="submit">Cập nhật</button>
         <button class="btn btn-secondary btn-left" type="button" (click)="onCancel()">Hủy bỏ</button>

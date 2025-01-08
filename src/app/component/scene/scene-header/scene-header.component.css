@@ -1,0 +1,13 @@
+.schedule-header{
+    margin-top: 20px;
+    margin-left: 200px;
+}
+.schedule-header-title{
+    text-decoration: none;
+    color: #000;
+    font-size: large;
+    font-weight: bold;
+}
+.schedule-header-space{
+    margin-left: 80px;
+}

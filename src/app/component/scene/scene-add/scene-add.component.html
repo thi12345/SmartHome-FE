@@ -1,0 +1,55 @@
+<app-scene-header></app-scene-header>
+<form #myForm="ngForm" (ngSubmit)="addScene(myForm)">
+
+  <div class="form-add">
+    <label class="form-add-label required">Thiết bị 1:</label>
+    <select class="form-select form-select-length" name="device1" [(ngModel)]="device0"
+      (ngModelChange)="onDevice0Change()" required id="device1">
+      <option *ngFor="let device of devices" [ngValue]="device">{{device.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-add">
+    <label class="form-add-label required">Giá trị 1:</label>
+    <input id="value1" [(ngModel)]="value0" name="value1" required>
+  </div>
+
+  <div class="form-add">
+    <label class="form-add-label required">So sánh:</label>
+    <select class="form-select form-select-length" name="compare" [(ngModel)]="compare" id="compare" required>
+      <option [ngValue]="-1">Nhỏ hơn</option>
+      <option [ngValue]="0">Bằng</option>
+      <option [ngValue]="1">Lớn hơn</option>
+    </select>>
+  </div>
+
+  <div class="form-add">
+    <label class="form-add-label required">Thiết bị 2:</label>
+    <select class="form-select form-select-length" name="device2" [(ngModel)]="device1" id="device2"
+      (ngModelChange)="onDevice1Change()" required>
+      <option *ngFor="let device of devices" [ngValue]="device">{{device.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-add">
+    <label class="form-add-label required">Thao tác 2:</label>
+    <select [(ngModel)]="action1" name="action2" class="form-select" required id="action2">
+      <option class="device-name" *ngFor="let act of [true,false]" [ngValue]="act">{{turnOnOff[act.toString()]}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-add">
+    <label class="form-add-label required">Giá trị 2:</label>
+    <input id="value2" [(ngModel)]="value1" name="value2" required>
+  </div>
+
+
+
+
+
+
+  <button type="submit" class="btn btn-primary form-add-sub">Thêm kịch bản</button>
+</form>

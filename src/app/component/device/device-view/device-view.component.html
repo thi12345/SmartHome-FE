@@ -9,7 +9,6 @@
             <th scope="col" class="col-length-4">Loại</th>
             <th scope="col" class="col-length-1">Mô tả</th>
             <th scope="col">Mức tiêu thụ (W)</th>
-            <th scope="col" class="col-length-2">Tình trạng hoạt động</th>
             <th scope="col">Hành động</th>
           </tr>
         </thead>
@@ -19,8 +18,7 @@
             <th>{{device.category.name}}</th>
             <th>{{device.description}}</th>
             <th>{{device.energy}}</th>
-            <th></th>
-            <th class="col-length-2">{{device.isActive}}</th>
+            <th class="col-length-2">{{isOnOff[device.isActive.toString()]}}</th>
 
             <th>
               <div class="btn-group" role="group" aria-label="Basic example">
@@ -42,8 +40,7 @@
 
                           <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Bật/Tắt:</label>
-                            <select [(ngModel)]="payload.action" name="action"
-                              (ngModelChange)="takeAction(payload.action)">
+                            <select [(ngModel)]="payload.action" name="action">
                               <option *ngFor="let action of actions" [ngValue]="action.value">{{action.name}}
                               </option>
                             </select>
@@ -51,7 +48,7 @@
 
                           <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Giá trị:</label>
-                            <select [(ngModel)]="payload.value" name="action" [disabled]="disabledInput">
+                            <select [(ngModel)]="payload.value" name="value" [disabled]="!payload.action">
                               <option *ngFor="let value of deviceValueOnList" [ngValue]="value.value">{{value.value}}
                               </option>
                             </select>
